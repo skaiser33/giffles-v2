@@ -12,10 +12,11 @@ function App() {
     const getGifs = async () => {
       try {
         const res = await axios.get(
-          `https://api.giphy.com/v1/gifs/search?api_key=C45MMlNyrdjBOB9vgOy9BkNBfEhE4UOb&q=${"poo"}&limit=5&offset=0&lang=en`
+          `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${"dog"}&limit=5&offset=0&lang=en`
         );
         const resGifs = await res.data;
         // console.log(resGifs.data[0]);
+        // console.log(process.env.REACT_APP_GIPHY_API_KEY);
         setGif1(() => resGifs.data[0].embed_url);
       } catch (error) {
         console.log(error);
@@ -25,6 +26,7 @@ function App() {
   }, []);
 
   return (
+    
     <div className="container">
       <Header />
       <div class="gif-container">
