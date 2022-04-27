@@ -1,50 +1,25 @@
 // import './App.css';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+
 import Header from './components/Header';
+import GifContainer from './components/GifContainer';
 
 
 function App() {
 
-  const [gif1, setGif1] = useState("about:blank")
 
-  useEffect(() => {
-    const getGifs = async () => {
-      try {
-        const res = await axios.get(
-          `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${"dog"}&limit=5&offset=0&lang=en`
-        );
-        const resGifs = await res.data;
-        // console.log(resGifs.data[0]);
-        // console.log(process.env.REACT_APP_GIPHY_API_KEY);
-        setGif1(() => resGifs.data[0].embed_url);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getGifs();
-  }, []);
 
   return (
     
     <div className="container">
       <Header />
-      <div class="gif-container">
-            {/* <p id="pre1"></p> */}
-            <iframe id="gif1" title="one" src={gif1} width="300" height="200" class="giphy-embed"></iframe>
-            {/* <p id="pre1"></p>
-            <iframe id="gif1" title="one" src="about:blank" width="300" height="200" class="giphy-embed"></iframe> */}
-            {/* <p id="pre2"></p>
-            <iframe id="gif2" title="two" src="about:blank" width="300" height="200" class="giphy-embed"></iframe>
-            <p id="pre3"></p>
-            <iframe id="gif3" title="three" src="about:blank" width="300" height="200" class="giphy-embed"></iframe>
-            <p id="pre4"></p>
-            <iframe id="gif4" title="four" src="about:blank" width="300" height="200" class="hide"></iframe>
-            <p id="pre5"></p> */}
-        </div>
-
+      <div className="gifs-container">
+        <GifContainer id="1" title="one"/>
+        <GifContainer id="2" title="two"/>
+        <GifContainer id="3" title="three"/>
+      </div>
     </div>
   );
 }
 
 export default App;
+
