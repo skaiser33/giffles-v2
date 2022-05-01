@@ -26,10 +26,13 @@ const GifContainer = (props) => {
   }, []);
 
   return (
-    <div className="gif-container">
-    <p id={`pre${props.id}`}></p>
-      <img id={`gif${props.id}`} title={props.title} src={gif1} className="giphy-embed"></img>
-    </div>  
+    <>
+      {/* <p id={`pre${props.id}`}></p> */}
+      <div className="gif-container">
+        <img id={`gif${props.id}`} title={props.title} src={gif1} className="giphy-embed"></img>
+      </div>  
+      {/* <p id="spacer"></p> */}
+    </>
   );
 };
 
