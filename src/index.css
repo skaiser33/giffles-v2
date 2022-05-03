@@ -128,6 +128,12 @@ img {
   padding: 0px 20px;
 }
 
+#instruct-button {
+  position: fixed;
+  bottom: 3vh;
+  left: 2vh;
+}
+
 /* input {
   font-size: 25px;
   font-family: 'Big Shoulders Display', cursive;
