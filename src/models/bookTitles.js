@@ -1276,3 +1276,5 @@ const bookTitles = [
   "Zeno’s Conscience",
   "Zorba the Greek",
   ]
+
+  export default bookTitles;

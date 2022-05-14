@@ -1,8 +1,17 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
+
 import GifContainer from './GifContainer';
+import getTitle from '../api/getTitle';
 
 
 const GifflesContainer = () => {
+
+  const [title, setTitle] = useState("")
+
+  useEffect(() => {
+    getTitle();
+  }, []);
 
   return (
     // <h3>sanity check</h3>

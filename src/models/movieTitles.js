@@ -4653,3 +4653,5 @@ const movieTitles = [
         "Zack and Miri Make a Porno",
         "Zero Dark Thirty"
     ]
+
+export default movieTitles;

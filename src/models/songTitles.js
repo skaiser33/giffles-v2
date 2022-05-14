@@ -9775,3 +9775,5 @@ const songTitles = [
   "Zombie",
   "Zoo Station",
 ];
+
+export default songTitles;

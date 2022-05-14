@@ -2,6 +2,9 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import getTitle from '../api/getTitle';
+
+
 const GifContainer = (props) => {
 
   const [gif1, setGif1] = useState("about:blank")
@@ -13,7 +16,7 @@ const GifContainer = (props) => {
           `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${"dog"}&limit=5&offset=0&lang=en`
         );
         const resGifs = await res.data;
-        console.log(resGifs.data[0]);
+        // console.log(resGifs.data[0]);
         // setGif1(() => resGifs.data[0].embed_url);
         setGif1(() => resGifs.data[0].images.fixed_height.url);
         // console.log(resGifs.data[0].images.fixed_height.url);
