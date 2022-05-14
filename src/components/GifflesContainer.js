@@ -10,7 +10,14 @@ const GifflesContainer = () => {
   const [title, setTitle] = useState("")
 
   useEffect(() => {
-    getTitle();
+    let gifWords = getTitle();
+    
+      //If title length is too short / too long, pick another title
+    while (gifWords.length < 2 || gifWords.length > 4) {
+      gifWords = getTitle();
+    }   
+      //resize iframes if needed
+      //***TO BE UNCOMMENTED??*** (gifWords.length === 4) ? shrinkGifs() : enlargeGifs();   
   }, []);
 
   return (

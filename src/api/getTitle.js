@@ -45,6 +45,7 @@ const getTitle = () => {
   //***TO BE UNCOMMENTED***}
   console.log('GIFWORDS ---->' + gifWords) // logs the full title
 
+  return gifWords;
 }
-
+//
 export default getTitle;
