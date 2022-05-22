@@ -43,7 +43,7 @@ const getTitle = () => {
   //***TO BE UNCOMMENTED***for (let y = 1; y <= gifWords.length; y++) {
   //***TO BE UNCOMMENTED***    if (gifWords[y] === null) respondToError();
   //***TO BE UNCOMMENTED***}
-  console.log('GIFWORDS ---->' + gifWords) // logs the full title
+  // console.log('GIFWORDS ---->' + gifWords) // logs the full title
 
   return gifWords;
 }
