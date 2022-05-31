@@ -4,12 +4,14 @@ import axios from 'axios';
 
 import GifContainer from './GifContainer';
 import getTitle from '../api/getTitle';
+import clearAll from '../api/clearAll';
 
 const GifflesContainer = () => {
 
   // const [title, setTitle] = useState("");
   const [gifWords, setGifWords] = useState([]);
-  const [gifSources, setGifSources] = useState(["about:blank", "about:blank", "about:blank"])
+  // const [gifSources, setGifSources] = useState(["#", "#", "#", "#"])
+  const [gifSources, setGifSources] = useState([])
 
   const gifContainers = gifSources.map((gifSource, idx) => {
     // console.log(gifSource);
@@ -22,6 +24,9 @@ const GifflesContainer = () => {
   })
 
   const loadGifs = () => {
+    if (gifSources.length) {
+      clearAll(gifSources.length);
+    }  
     setGifWords(getTitle());
     // console.log("i'm alive");
     // const getGifWords = async () => {
