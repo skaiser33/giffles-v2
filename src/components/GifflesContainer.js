@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import GifContainer from './GifContainer';
+import EmptyContainer from './EmptyContainer';
 import getTitle from '../api/getTitle';
 import clearAll from '../api/clearAll';
 
@@ -67,12 +68,16 @@ const GifflesContainer = () => {
   
   return (
     // <h3>sanity check</h3>
-    <div className="giffles-container">
-      <p id="pre1"></p>
-      {gifContainers}
-      {/* <GifContainer id="1" title="one" word={gifWords[0] ? gifWords[0] : "Loading"}/> */}
+    <>
+      <div className="giffles-container">
+        <p id="pre1"></p>
+        {gifSources.length 
+          ? gifContainers 
+          : <EmptyContainer/>}
+        {/* <GifContainer id="1" title="one" word={gifWords[0] ? gifWords[0] : "Loading"}/> */}
+      </div>
       <button onClick={loadGifs}>TESTER</button>
-    </div>  
+    </>  
   );
 };
 

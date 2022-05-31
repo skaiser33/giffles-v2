@@ -79,6 +79,10 @@ h3 {
   -moz-text-stroke-color: black;
 }
 
+img {
+  padding: 0px 20px;
+}
+
 /* .game-container {
   display: flex;
   justify-content: center;
@@ -124,9 +128,26 @@ h3 {
   margin-right: 20px;
 }
 
-img {
-  padding: 0px 20px;
+.empty-container {
+  /* z-index: 1; */
+  display: flex;
+  /* width: 18%;
+  height: 80%; */
+  /* max-width: 50%;
+  max-height: 10%;
+  padding: 4px;
+  border: 3px solid black;
+  border-radius: 1%;
+   */
+  width: 25%;
+  height: 20vh;
+  border: 10px solid black;
+  border-radius: 10%;
+  background-color: black;
+  margin-left: 20px;
+  margin-right: 20px;
 }
+
 
 #instruct-button {
   position: fixed;
