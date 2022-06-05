@@ -10,7 +10,7 @@ import clearAll from '../api/clearAll';
 const GifflesContainer = () => {
 
   // const [title, setTitle] = useState("");
-  const [gifWords, setGifWords] = useState([]);
+  const [title, setTitle] = useState([]);
   // const [gifSources, setGifSources] = useState(["#", "#", "#", "#"])
   const [gifSources, setGifSources] = useState([])
 
@@ -28,24 +28,25 @@ const GifflesContainer = () => {
     if (gifSources.length) {
       clearAll(gifSources.length);
     }  
-    setGifWords(getTitle());
+    ;
+    setTitle(getTitle());
     // console.log("i'm alive");
-    // const getGifWords = async () => {
+    // const gettitle = async () => {
     //   try {
     //     const res = await getTitle();
     //     console.log('res --->' + res);
     //   } catch (error) {
     //     console.log(error);
     //   }
-    //   getGifWords();
+    //   gettitle();
     // }
   }
 
   useEffect(() => {
     const getGifs = async () => {
       try {
-        // CREATE CONTROL IF GIFWORDS IS EMPTY
-        const gifUrls = gifWords.map(async(word) => {
+        // CREATE CONTROL IF title IS EMPTY
+        const gifUrls = title[1].map(async(word) => {
           const res = await axios.get(
                   `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${word}&limit=5&offset=0&lang=en`
                 );
@@ -56,15 +57,16 @@ const GifflesContainer = () => {
                 return resGifs.data[0].images.fixed_height.url;
         })        
         setGifSources(await Promise.all(gifUrls));
-        console.log('GIFWORDS ---->' + gifWords );
+        console.log('TITLE ---->' + title[0] );
+        console.log('GIFWORDS ---->' + title[1] );
       } catch (error) {
         console.log(error);
       }
     };
     getGifs();
       //resize iframes if needed
-      //***TO BE UNCOMMENTED??*** (gifWords.length === 4) ? shrinkGifs() : enlargeGifs();   
-  }, [gifWords]);
+      //***TO BE UNCOMMENTED??*** (title.length === 4) ? shrinkGifs() : enlargeGifs();   
+  }, [title]);
   
   return (
     // <h3>sanity check</h3>
@@ -74,7 +76,7 @@ const GifflesContainer = () => {
         {gifSources.length 
           ? gifContainers 
           : <EmptyContainer/>}
-        {/* <GifContainer id="1" title="one" word={gifWords[0] ? gifWords[0] : "Loading"}/> */}
+        {/* <GifContainer id="1" title="one" word={title[0] ? title[0] : "Loading"}/> */}
       </div>
       <button onClick={loadGifs}>TESTER</button>
     </>  

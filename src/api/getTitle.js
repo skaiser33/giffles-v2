@@ -6,14 +6,16 @@ import weakWords from '../models/weakWords.js';
 const getTitle = () => {
   // clearAll(); //***TO BE UNCOMMENTED***
   const masterArray = movieTitles;  //***TO BE MODIFIED***
-  let randomIndex, titleArray;
+  let randomIndex, titleString, titleArray;
   let gifWords = []; //words to be converted to gifs will be pushed into this array
   while (gifWords.length < 2 || gifWords.length > 4) {
     randomIndex = Math.floor(Math.random() * masterArray.length);
     // console.log('MOVIE TITLE ---->' + masterArray[randomIndex]) // logs the full title
 
     //Parse through each word of title for words that will be translated into gifs, "weak words" that will not, and punctuation 
-    titleArray = masterArray[randomIndex].toLowerCase().split(" ");
+    
+    titleString = masterArray[randomIndex].toLowerCase();
+    titleArray = titleString.split(" ");
 
     for (let i = 0; i < titleArray.length; i++) {
         //check for weak words and put between gifs
@@ -51,7 +53,8 @@ const getTitle = () => {
     // while (gifWords.length < 2 || gifWords.length > 4) {
     //   gifWords = getTitle();
   }   
-  return gifWords;
+  // return gifWords;
+  return [titleString, gifWords];
 }
 //
 export default getTitle;
