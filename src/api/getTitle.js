@@ -6,10 +6,12 @@ import weakWords from '../models/weakWords.js';
 const getTitle = () => {
   // clearAll(); //***TO BE UNCOMMENTED***
   const masterArray = movieTitles;  //***TO BE MODIFIED***
+  let nonGifText = {};
   let randomIndex, titleString, titleArray;
   let gifWords = []; //words to be converted to gifs will be pushed into this array
   while (gifWords.length < 2 || gifWords.length > 4) {
     gifWords = [];
+    nonGifText = {};
     randomIndex = Math.floor(Math.random() * masterArray.length);
     // console.log('MOVIE TITLE ---->' + masterArray[randomIndex]) // logs the full title
 
@@ -28,6 +30,13 @@ const getTitle = () => {
           if ((titleArray[i].replace(/[^\w]|_/g, "")) === weakWords[j]){
               //feed into correct placeholder based on gifWords.length
               document.getElementById(`pre${ gifWords.length + 1}`).textContent += ` ${ titleArray[i] }`
+
+              nonGifText[gifWords.length + 1] 
+                ? 
+                nonGifText[gifWords.length + 1] += ` ${ titleArray[i] }` 
+                :
+                nonGifText[gifWords.length + 1] = titleArray[i];
+
               i++;
           }    
       }
@@ -36,11 +45,25 @@ const getTitle = () => {
           // if first character is punctuation
           if (titleArray[i].search(/[.,:!?\(\)&']/) === 0) {
               document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(0) }`;
+
+              nonGifText[gifWords.length + 1] 
+                ? 
+                nonGifText[gifWords.length + 1] += ` ${ titleArray[i].charAt(0) }` 
+                :
+                nonGifText[gifWords.length + 1] = titleArray[i].charAt(0);
+
               gifWords.push(titleArray[i].replace(/[^\w\s]|_/g, ""));
           // if last character is punctuation
           } else if (titleArray[i].search(/[.,:!?\(\)&']/) === (titleArray[i].length - 1)) {       
               gifWords.push(titleArray[i].replace(/[^\w\s]|_/g, ""));   
-              document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(titleArray[i].length - 1) }`;  
+              document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(titleArray[i].length - 1) }`; 
+
+              nonGifText[gifWords.length + 1] 
+                ? 
+                nonGifText[gifWords.length + 1] += ` ${ titleArray[i].charAt(titleArray[i].length - 1) }` 
+                :
+                nonGifText[gifWords.length + 1] = titleArray[i].charAt(titleArray[i].length - 1);
+
           } else {
               gifWords.push(titleArray[i]);
           }  
@@ -52,12 +75,13 @@ const getTitle = () => {
     //***TO BE UNCOMMENTED***    if (gifWords[y] === null) respondToError();
     //***TO BE UNCOMMENTED***}
     console.log('getTitle() GIFWORDS ---->' + gifWords) // logs the full title
+    console.log(nonGifText) // logs the full title
           //If title length is too short / too long, pick another title
     // while (gifWords.length < 2 || gifWords.length > 4) {
     //   gifWords = getTitle();
   }   
   // return gifWords;
-  return [titleString, gifWords];
+  return [titleString, gifWords, nonGifText];
 }
 //
 export default getTitle;

@@ -57,8 +57,9 @@ const GifflesContainer = () => {
                 return resGifs.data[0].images.fixed_height.url;
         })        
         setGifSources(await Promise.all(gifUrls));
-        console.log('TITLE ---->' + title[0] );
-        console.log('GIFWORDS ---->' + title[1] );
+        console.log('TITLE ---->' + title[0]);
+        console.log('GIFWORDS ---->' + title[1]);
+        console.log('WEAKWORDSOBJ ---->' + title[2]);
       } catch (error) {
         console.log(error);
       }
