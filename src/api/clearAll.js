@@ -12,7 +12,7 @@ const clearAll = (items) => {
   //Clears the text between gif frames
   const clearBetweenGifs = () => {
     for (let x = 1; x <= items; x++) {
-        document.getElementById(`pre${ x }`).textContent = ""
+        if (document.getElementById(`pre${ x }`)) document.getElementById(`pre${ x }`).textContent = ""
     }
   };
 

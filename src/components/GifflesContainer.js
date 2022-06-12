@@ -20,6 +20,11 @@ const GifflesContainer = () => {
       <>
         <GifContainer key={gifSource} id={(idx + 1).toString()} title={(idx + 1).toString()} gif={gifSource}/>
         <p id={`pre${(idx + 2).toString()}`}></p>
+        { (title[2][idx + 2]) ?
+          <p id={`pre${(idx + 2).toString()}`}>{title[2][idx + 2]}</p>
+          :
+          <></>
+        } 
       </>
     )
   })
@@ -59,7 +64,7 @@ const GifflesContainer = () => {
         setGifSources(await Promise.all(gifUrls));
         console.log('TITLE ---->' + title[0]);
         console.log('GIFWORDS ---->' + title[1]);
-        console.log('WEAKWORDSOBJ ---->' + title[2]);
+        console.log(title[2]);
       } catch (error) {
         console.log(error);
       }
@@ -73,7 +78,12 @@ const GifflesContainer = () => {
     // <h3>sanity check</h3>
     <>
       <div className="giffles-container">
-        <p id="pre1"></p>
+        {/* <p id="pre1"></p>*/}
+        { (title[2] && title[2][1]) ?
+          <p id="pre1">{title[2][1]}</p>
+          :
+          <></>
+        } 
         {gifSources.length 
           ? gifContainers 
           : <EmptyContainer/>}

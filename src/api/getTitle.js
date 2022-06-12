@@ -29,7 +29,7 @@ const getTitle = () => {
           // ***UNCOMMENT*** if (titleArray[i] === undefined) respondToError();
           if ((titleArray[i].replace(/[^\w]|_/g, "")) === weakWords[j]){
               //feed into correct placeholder based on gifWords.length
-              document.getElementById(`pre${ gifWords.length + 1}`).textContent += ` ${ titleArray[i] }`
+              // document.getElementById(`pre${ gifWords.length + 1}`).textContent += ` ${ titleArray[i] }`
 
               nonGifText[gifWords.length + 1] 
                 ? 
@@ -44,7 +44,7 @@ const getTitle = () => {
       if (i <= (titleArray.length - 1)) {
           // if first character is punctuation
           if (titleArray[i].search(/[.,:!?\(\)&']/) === 0) {
-              document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(0) }`;
+              // document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(0) }`;
 
               nonGifText[gifWords.length + 1] 
                 ? 
@@ -56,7 +56,7 @@ const getTitle = () => {
           // if last character is punctuation
           } else if (titleArray[i].search(/[.,:!?\(\)&']/) === (titleArray[i].length - 1)) {       
               gifWords.push(titleArray[i].replace(/[^\w\s]|_/g, ""));   
-              document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(titleArray[i].length - 1) }`; 
+              // document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(titleArray[i].length - 1) }`; 
 
               nonGifText[gifWords.length + 1] 
                 ? 
