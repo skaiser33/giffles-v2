@@ -1,11 +1,17 @@
 // import './App.css';
 
+import Header from './components/Header';
+import GameContainer from './components/GameContainer';
+
+
 function App() {
   return (
-    <div className="App">
-      <h1>Giffles</h1>
-    </div>
+    <>
+      <Header />
+      <GameContainer />
+    </>
   );
 }
 
 export default App;
+

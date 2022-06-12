@@ -1,13 +1,244 @@
+:root {
+  --dark: rgb(46, 3, 132);
+  --light: white;
+  --red: rgb(190, 25, 19);
+  --red-with-stroke: rgb(224, 37, 31);
+  --green: rgb(115, 171, 120);
+  /* --white-overlay: rgb(235, 231, 231, .8); */
+  --title-font: 'Potta One', cursive;
+  --main-font: 'Big Shoulders Display', cursive;
+  --alt-font: 'Rajdhani', sans-serif; 
+}
+
+html{
+  height: 100vh;
+  /* width: 100vh; */
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* height: 100%; */
+  max-width: 100%;
+  background:rgb(0, 0, 0);
+  background-attachment: fixed;
+  background: linear-gradient(to top, rgba(47, 1, 174, 0.4), rgb(255, 141, 1, 0.8)); 
+  background: -webkit-linear-gradient(to top, rgba(238, 0, 0, 0.4), rgb(255, 159, 41));
+  background: -moz-linear-gradient(to top, rgba(238, 0, 0, 0.4), rgb(255, 159, 41));
+  
+  font-family: var(--main-font);
+  font-size: 1.875rem;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
+    sans-serif; */
+  -webkit-font-smoothing: antialiased; 
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+} */
+
+header {
+  margin: 5px auto ;
+  max-width: 40%;
+  /* max-height: 20%; */
+  text-align: center;
+  border: 3px ridge  var(--green);
+  border-radius: 90%;
 }
+
+header > p {
+  color: var(--red);
+  margin-top: .3em;
+  font-size: 1.2rem;
+
+}
+
+header > p > a {
+  text-transform: none;
+  color: var(--red);
+}
+
+h1 {
+  font-family: var(--title-font);
+  font-size: 4rem;
+  color: var(--light);
+	-webkit-text-stroke-width: .5px;
+	-webkit-text-stroke-color: black;
+	-moz-text-stroke-width: .5px;
+	-moz-text-stroke-color: black;
+  margin: .5em 0em 0em 0em;
+}
+
+h3 {
+  margin: 0em;
+  color: var(--red-with-stroke);
+  -webkit-text-stroke-width: .001px;
+  -webkit-text-stroke-color: black;
+  -moz-text-stroke-width: .001px;
+  -moz-text-stroke-color: black;
+}
+
+img {
+  padding: 0px 20px;
+}
+
+/* .game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.interaction-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.giffles-container {
+  display: flex;
+  /* flex-flow: row; */
+  justify-content: space-evenly;
+  /* align-items: center; */
+  margin: 0 auto;
+  max-width: 75%;
+  /* background-color: red; */
+  /* border: 3px ridge var(--green); */
+  /* border-radius: 3%; */
+  padding: 3%;
+  text-transform: uppercase;
+}
+
+.gif-container {
+  /* z-index: 1; */
+  display: flex;
+  /* width: 18%;
+  height: 80%; */
+  /* max-width: 50%;
+  max-height: 10%;
+  padding: 4px;
+  border: 3px solid black;
+  border-radius: 1%;
+   */
+  border: 10px solid black;
+  border-radius: 10%;
+  background-color: black;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.empty-container {
+  /* z-index: 1; */
+  display: flex;
+  /* width: 18%;
+  height: 80%; */
+  /* max-width: 50%;
+  max-height: 10%;
+  padding: 4px;
+  border: 3px solid black;
+  border-radius: 1%;
+   */
+  width: 25%;
+  height: 20vh;
+  border: 10px solid black;
+  border-radius: 10%;
+  background-color: black;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+
+#instruct-button {
+  position: fixed;
+  bottom: 3vh;
+  left: 2vh;
+}
+
+/* input {
+  font-size: 25px;
+  font-family: 'Big Shoulders Display', cursive;
+  border: 2px solid black;
+
+}
+
+select {
+  font-size: 22px;
+  font-family: 'Potta One', cursive;
+  margin: 0px 30px 5px 30px;
+} */
+
+/* .instructions {
+  z-index: 100;
+}
+.instructions > p {
+  z-index: 100;
+  font-size: .75em;
+  color: rgba(255,255,255,1);
+  color: rgb(247, 172, 81);
+  background: black;
+  background: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin: 0;
+  width: 30%;
+  height: 30px;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+  font-size: 13px;
+  color: white;
+}
+
+.hide {
+  display: none;
+}
+
+.show-description p {
+  height: 270px;
+}
+
+.show-description small {
+  opacity: 1;
+} */
+
+/* #timer {
+  position: fixed;
+  top: 5px;
+  right: 10px;
+} */
+
+/* #newClue {
+  font-size: 25px;
+  font-family: 'Big Shoulders Display', cursive;
+  border: 2px solid black;
+  margin: 50px 20px 20px 20px;
+} */
+
+/* #is-player-correct{
+  font-family: 'Potta One', cursive;
+  font-size: 25px; 
+  text-align-last: center;
+} */
+
+/* #answer {
+  font-size: 20px;
+  font-family: 'Potta One', cursive;
+  width: 350px;
+  margin: 0px 30px; 
+}
+
+#newPlayer {
+  font-size: 18px;
+  font-family: 'Big Shoulders Display', cursive;
+}  */
