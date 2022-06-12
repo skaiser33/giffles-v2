@@ -61,7 +61,6 @@ const getTitle = () => {
     //***TO BE UNCOMMENTED***    if (gifWords[y] === null) respondToError();
     //***TO BE UNCOMMENTED***}
     console.log('getTitle() GIFWORDS ---->' + gifWords) // logs the full title
-    console.log(nonGifText) // logs the full title
           //If title length is too short / too long, pick another title
     // while (gifWords.length < 2 || gifWords.length > 4) {
     //   gifWords = getTitle();

@@ -19,9 +19,9 @@ const GifflesContainer = () => {
     return (
       <>
         <GifContainer key={gifSource} id={(idx + 1).toString()} title={(idx + 1).toString()} gif={gifSource}/>
-        <p id={`pre${(idx + 2).toString()}`}></p>
+        {/* <p id={`pre${(idx + 2).toString()}`}></p> */}
         { (title[2][idx + 2]) ?
-          <p id={`pre${(idx + 2).toString()}`}>{title[2][idx + 2]}</p>
+          <p key={`pre${(idx + 2).toString()}`} id={`pre${(idx + 2).toString()}`}>{title[2][idx + 2]}</p>
           :
           <></>
         } 
