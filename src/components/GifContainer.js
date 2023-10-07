@@ -2,10 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
-
 const GifContainer = (props) => {
-
   // const [gif1, setGif1] = useState("about:blank")
 
   // useEffect(() => {
@@ -30,9 +27,14 @@ const GifContainer = (props) => {
   return (
     <>
       {/* <p id={`pre${props.id}`}></p> */}
-      <div className="gif-container">
-        <img id={`gif${props.id}`} title={props.title} src={props.gif} className="giphy-embed"></img>
-      </div>  
+      <div className='gif-container'>
+        <img
+          id={`gif${props.id}`}
+          title={props.title}
+          src={props.gif}
+          className='giphy-embed'
+        ></img>
+      </div>
       {/* <p id="spacer"></p> */}
     </>
   );

@@ -8,12 +8,11 @@ import getTitle from '../api/getTitle';
 import clearAll from '../api/clearAll';
 
 const CluesContainer = () => {
-  // const [title, setTitle] = useState("");
   const [title, setTitle] = useState([]);
   // const [gifSources, setGifSources] = useState(["#", "#", "#", "#"])
   const [gifSources, setGifSources] = useState([]);
 
-  const gifContainers = gifSources.map((gifSource, idx) => {
+  const fillGifContainers = gifSources.map((gifSource, idx) => {
     // console.log(gifSource);
     return (
       <>
@@ -24,6 +23,7 @@ const CluesContainer = () => {
           gif={gifSource}
         />
         {/* <p id={`pre${(idx + 2).toString()}`}></p> */}
+        {/* ***title[2] IS THE NON-GIF WORDS OBJECT -- better way to RE-FACTOR this as object with semantic properties? */}
         {title[2][idx + 2] ? (
           <p
             key={`pre${(idx + 2).toString()}`}
@@ -81,14 +81,13 @@ const CluesContainer = () => {
     //resize iframes if needed
     //***TO BE UNCOMMENTED??*** (title.length === 4) ? shrinkGifs() : enlargeGifs();
   }, [title]);
-
   return (
     // <h3>sanity check</h3>
     <>
-      <div className='giffles-container'>
+      <div className='clues-container'>
         {/* <p id="pre1"></p>*/}
         {title[2] && title[2][1] ? <p id='pre1'>{title[2][1]}</p> : <></>}
-        {gifSources.length ? gifContainers : <EmptyContainer />}
+        {gifSources.length ? fillGifContainers : <EmptyContainer />}
         {/* <GifContainer id="1" title="one" word={title[0] ? title[0] : "Loading"}/> */}
       </div>
       <button onClick={loadGifs}>TESTER</button>
