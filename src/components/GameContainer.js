@@ -1,13 +1,13 @@
 import React from 'react';
-import GifflesContainer from './GifflesContainer';
+import CluesContainer from './CluesContainer';
 import InteractionContainer from './InteractionContainer';
 import Instructions from './Instructions';
 
 const GameContainer = () => {
   return (
-    <div className="game-container">
-      <GifflesContainer />
-      <InteractionContainer />       
+    <div className='game-container'>
+      <CluesContainer />
+      <InteractionContainer />
       <Instructions />
     </div>
   );
