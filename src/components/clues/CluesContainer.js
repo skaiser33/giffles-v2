@@ -4,8 +4,8 @@ import axios from 'axios';
 
 import GifContainer from './GifContainer';
 import EmptyContainer from './EmptyContainer';
-import getTitle from '../api/getTitle';
-import clearAll from '../api/clearAll';
+import getTitle from '../../api/getTitle';
+import clearAll from '../../api/clearAll';
 
 const CluesContainer = () => {
   const [title, setTitle] = useState([]);

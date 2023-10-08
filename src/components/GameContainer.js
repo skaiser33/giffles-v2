@@ -1,6 +1,6 @@
 import React from 'react';
-import CluesContainer from './CluesContainer';
-import InteractionContainer from './InteractionContainer';
+import CluesContainer from './clues/CluesContainer';
+import InteractionContainer from './interaction/InteractionContainer';
 import Instructions from './Instructions';
 
 const GameContainer = () => {
