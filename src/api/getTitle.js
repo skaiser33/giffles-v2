@@ -1,6 +1,7 @@
 import React from 'react';
 import movieTitles from '../models/movieTitles.js';
 import weakWords from '../models/weakWords.js';
+import respondToError from './respondToError.js';
 
 //Generates random index, translates/tests title from master array
 const getTitle = () => {
@@ -61,10 +62,10 @@ const getTitle = () => {
       }
     }
     // console.log(gifWords)
-    //***TO BE UNCOMMENTED*** if (gifWords === null) respondToError();
-    //***TO BE UNCOMMENTED***for (let y = 1; y <= gifWords.length; y++) {
-    //***TO BE UNCOMMENTED***    if (gifWords[y] === null) respondToError();
-    //***TO BE UNCOMMENTED***}
+    if (gifWords === null) respondToError();
+    for (let y = 1; y <= gifWords.length; y++) {
+      if (gifWords[y] === null) respondToError();
+    }
     console.log('getTitle() GIFWORDS ---->' + gifWords); // logs the full title
     //If title length is too short / too long, pick another title
     // while (gifWords.length < 2 || gifWords.length > 4) {
