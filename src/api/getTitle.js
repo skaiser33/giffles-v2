@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import movieTitles from '../models/movieTitles.js';
 import weakWords from '../models/weakWords.js';
 import respondToError from './respondToError.js';
@@ -56,12 +56,15 @@ const getTitle = () => {
           gifWords.push(titleArray[i].replace(/[^\w\s]|_/g, ''));
           // document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(titleArray[i].length - 1) }`;
           updateNonGifText(titleArray[i].charAt(titleArray[i].length - 1));
+          // if last two characters are 's
+        } else if (titleArray[i].slice(-2) === "'s") {
+          gifWords.push(titleArray[i].slice(0, -2));
+          updateNonGifText(titleArray[i].slice(-2));
         } else {
           gifWords.push(titleArray[i]);
         }
       }
     }
-    // console.log(gifWords)
     if (gifWords === null) respondToError();
     for (let y = 1; y <= gifWords.length; y++) {
       if (gifWords[y] === null) respondToError();
