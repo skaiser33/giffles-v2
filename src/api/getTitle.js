@@ -74,8 +74,7 @@ const getTitle = () => {
     // while (gifWords.length < 2 || gifWords.length > 4) {
     //   gifWords = getTitle();
   }
-  // return gifWords;
-  // return [titleString, gifWords, nonGifText];
+
   return {
     titleString: titleString,
     gifWords: gifWords,

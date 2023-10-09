@@ -27,7 +27,6 @@ const CluesContainer = () => {
           gif={gifSource}
         />
         {/* <p id={`pre${(idx + 2).toString()}`}></p> */}
-        {/* ***title[2] IS THE NON-GIF WORDS OBJECT -- better way to RE-FACTOR this as object with semantic properties? */}
         {title.nonGifText[idx + 2] ? (
           <p
             key={`pre${(idx + 2).toString()}`}
@@ -63,7 +62,6 @@ const CluesContainer = () => {
     const getGifs = async () => {
       try {
         // CREATE CONTROL IF title IS EMPTY
-        // !!!was title[1].map
         const gifUrls = title.gifWords.map(async (word) => {
           const res = await axios.get(
             `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${word}&limit=5&offset=0&lang=en`
@@ -84,7 +82,7 @@ const CluesContainer = () => {
     };
     getGifs();
     //resize iframes if needed
-    //***TO BE UNCOMMENTED??*** (title.length === 4) ? shrinkGifs() : enlargeGifs();
+    //***TO BE UNCOMMENTED??*** (title.gifWords.length === 4) ? shrinkGifs() : enlargeGifs();
   }, [title]);
   return (
     // <h3>sanity check</h3>
@@ -97,7 +95,7 @@ const CluesContainer = () => {
           <></>
         )}
         {gifSources.length ? fillGifContainers : <EmptyContainer />}
-        {/* <GifContainer id="1" title="one" word={title[0] ? title[0] : "Loading"}/> */}
+        {/* <GifContainer id="1" title="one" word={title.titleString ? title.titleString : "Loading"}/> */}
       </div>
       <button onClick={loadGifs}>TESTER</button>
     </>
