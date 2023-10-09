@@ -8,7 +8,11 @@ import getTitle from '../../api/getTitle';
 import clearAll from '../../api/clearAll';
 
 const CluesContainer = () => {
-  const [title, setTitle] = useState([]);
+  const [title, setTitle] = useState({
+    titleString: [],
+    gifWords: [],
+    nonGifText: {},
+  });
   // const [gifSources, setGifSources] = useState(["#", "#", "#", "#"])
   const [gifSources, setGifSources] = useState([]);
 
@@ -24,12 +28,12 @@ const CluesContainer = () => {
         />
         {/* <p id={`pre${(idx + 2).toString()}`}></p> */}
         {/* ***title[2] IS THE NON-GIF WORDS OBJECT -- better way to RE-FACTOR this as object with semantic properties? */}
-        {title[2][idx + 2] ? (
+        {title.nonGifText[idx + 2] ? (
           <p
             key={`pre${(idx + 2).toString()}`}
             id={`pre${(idx + 2).toString()}`}
           >
-            {title[2][idx + 2]}
+            {title.nonGifText[idx + 2]}
           </p>
         ) : (
           <></>
@@ -59,7 +63,8 @@ const CluesContainer = () => {
     const getGifs = async () => {
       try {
         // CREATE CONTROL IF title IS EMPTY
-        const gifUrls = title[1].map(async (word) => {
+        // !!!was title[1].map
+        const gifUrls = title.gifWords.map(async (word) => {
           const res = await axios.get(
             `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${word}&limit=5&offset=0&lang=en`
           );
@@ -70,9 +75,9 @@ const CluesContainer = () => {
           return resGifs.data[0].images.fixed_height.url;
         });
         setGifSources(await Promise.all(gifUrls));
-        console.log('TITLE ---->' + title[0]);
-        console.log('GIFWORDS ---->' + title[1]);
-        console.log(title[2]);
+        console.log('TITLE ---->' + title.titleString);
+        console.log('GIFWORDS ---->' + title.gifWords);
+        console.log('NONGIFTEXT OBJ --->' + title.nonGifText);
       } catch (error) {
         console.log(error);
       }
@@ -86,7 +91,11 @@ const CluesContainer = () => {
     <>
       <div className='clues-container'>
         {/* <p id="pre1"></p>*/}
-        {title[2] && title[2][1] ? <p id='pre1'>{title[2][1]}</p> : <></>}
+        {title.nonGifText && title.nonGifText[1] ? (
+          <p id='pre1'>{title.nonGifText[1]}</p>
+        ) : (
+          <></>
+        )}
         {gifSources.length ? fillGifContainers : <EmptyContainer />}
         {/* <GifContainer id="1" title="one" word={title[0] ? title[0] : "Loading"}/> */}
       </div>

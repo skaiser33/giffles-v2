@@ -75,7 +75,12 @@ const getTitle = () => {
     //   gifWords = getTitle();
   }
   // return gifWords;
-  return [titleString, gifWords, nonGifText];
+  // return [titleString, gifWords, nonGifText];
+  return {
+    titleString: titleString,
+    gifWords: gifWords,
+    nonGifText: nonGifText,
+  };
 };
 //
 export default getTitle;

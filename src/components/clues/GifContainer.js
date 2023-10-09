@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 
 const GifContainer = (props) => {
   // const [gif1, setGif1] = useState("about:blank")
