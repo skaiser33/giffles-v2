@@ -133,6 +133,7 @@ img {
   border-radius: 1%;
    */
   border: 10px solid black;
+  /* height: 200px !important; */
   border-radius: 10%;
   background-color: black;
   margin-left: 20px;

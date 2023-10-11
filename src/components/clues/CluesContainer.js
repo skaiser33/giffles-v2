@@ -70,7 +70,9 @@ const CluesContainer = () => {
           // console.log(resGifs.data[0]);
           // setGif1(() => resGifs.data[0].embed_url);
           // setGif1(() => res1Gifs.data[0].images.fixed_height.url);
-          return resGifs.data[0].images.fixed_height.url;
+          console.log('width-->' + resGifs.data[0].images.fixed_height.width);
+          // fixed height of 200px; width is variable
+          return resGifs.data[0].images.fixed_height;
         });
         setGifSources(await Promise.all(gifUrls));
         console.log('TITLE ---->' + title.titleString);

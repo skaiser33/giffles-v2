@@ -23,7 +23,7 @@ const GifContainer = (props) => {
   //   };
   //   getGifs();
   // }, []);
-
+  console.log('gif width in GifContainer-->', props.gif.width);
   return (
     <>
       {/* <p id={`pre${props.id}`}></p> */}
@@ -31,7 +31,7 @@ const GifContainer = (props) => {
         <img
           id={`gif${props.id}`}
           title={props.title}
-          src={props.gif}
+          src={props.gif.url}
           className='giphy-embed'
         ></img>
       </div>
