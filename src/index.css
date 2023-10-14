@@ -132,6 +132,8 @@ img {
   border: 3px solid black;
   border-radius: 1%;
    */
+  align-items: center;
+  justify-content: center;
   border: 10px solid black;
   /* height: 200px !important; */
   border-radius: 10%;

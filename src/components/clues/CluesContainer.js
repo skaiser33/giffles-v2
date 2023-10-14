@@ -17,11 +17,11 @@ const CluesContainer = () => {
   const [gifSources, setGifSources] = useState([]);
 
   const fillGifContainers = gifSources.map((gifSource, idx) => {
-    // console.log(gifSource);
+    console.log(gifSource);
     return (
       <>
         <GifContainer
-          key={gifSource}
+          key={gifSource.url}
           id={(idx + 1).toString()}
           title={(idx + 1).toString()}
           gif={gifSource}
@@ -83,7 +83,7 @@ const CluesContainer = () => {
       }
     };
     getGifs();
-    //resize iframes if needed
+    //resize gifContainer if needed
     //***TO BE UNCOMMENTED??*** (title.gifWords.length === 4) ? shrinkGifs() : enlargeGifs();
   }, [title]);
   return (

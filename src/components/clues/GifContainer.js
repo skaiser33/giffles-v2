@@ -24,15 +24,28 @@ const GifContainer = (props) => {
   //   getGifs();
   // }, []);
   console.log('gif width in GifContainer-->', props.gif.width);
+
+  // adjusts height proportionally if images that are too wide
+  const imgDisplayHeight =
+    props.gif.width > 250
+      ? `${(props.gif.height / props.gif.width) * 250}px`
+      : `${props.gif.height}px`;
+
   return (
     <>
       {/* <p id={`pre${props.id}`}></p> */}
-      <div className='gif-container'>
+      <div
+        className='gif-container'
+        // style={{ width: 'min(35%, 300px)' }}
+        style={{ minWidth: '265px', minHeight: '200px' }}
+        // DELETE PLACEHOLDER COMMENT - to keep prettier happy
+      >
         <img
           id={`gif${props.id}`}
           title={props.title}
           src={props.gif.url}
           className='giphy-embed'
+          style={{ maxWidth: '250px', maxHeight: imgDisplayHeight }}
         ></img>
       </div>
       {/* <p id="spacer"></p> */}
