@@ -1,9 +1,12 @@
-import React from 'react';
+// import React from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
 import buttonTheme from '../../themes/buttonTheme';
 
 const InteractionContainer = () => {
+  const [selectedCategory, setSelectedCategory] = useState('movies');
+
   return (
     <div className='interaction-container'>
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
@@ -21,7 +24,12 @@ const InteractionContainer = () => {
 
         <form id='nextRoundForm'>
           <label for='categories'>Choose your category:</label>
-          <select name='categories' id='categories'>
+          <select
+            name='categories'
+            id='categories'
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(e.target.value)}
+          >
             <option value='movies'>Movies</option>
             <option value='songs'>Songs</option>
             <option value='books'>Books</option>

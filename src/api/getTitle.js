@@ -1,12 +1,28 @@
 // import React from 'react';
-import movieTitles from '../models/movieTitles.js';
+import books from '../models/books.js';
+import movies from '../models/movies.js';
+import songs from '../models/songs.js';
 import weakWords from '../models/weakWords.js';
 import respondToError from './respondToError.js';
 
 //Generates random index, translates/tests title from master array
-const getTitle = () => {
+const getTitle = (category) => {
   // clearAll(); //***TO BE UNCOMMENTED***
-  const titles = movieTitles; //***TO BE MODIFIED***
+  let titles;
+  switch (category) {
+    case 'Movies':
+      titles = movies;
+      break;
+    case 'Songs':
+      titles = songs;
+      break;
+    case 'Books':
+      titles = books;
+      break;
+    default:
+      titles = movies;
+  }
+  console.log('selector test' + titles[0]);
   let nonGifText = {};
   let randomIndex, titleString, titleArray;
   let gifWords = []; //words to be converted to gifs will be pushed into this array
@@ -81,5 +97,5 @@ const getTitle = () => {
     nonGifText: nonGifText,
   };
 };
-//
+
 export default getTitle;

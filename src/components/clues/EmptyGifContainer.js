@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EmptyContainer = () => {
+const EmptyGifContainer = () => {
   return (
     <>
       <>
@@ -13,4 +13,4 @@ const EmptyContainer = () => {
   );
 };
 
-export default EmptyContainer;
+export default EmptyGifContainer;

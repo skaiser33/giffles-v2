@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import GifContainer from './GifContainer';
-import EmptyContainer from './EmptyContainer';
+import EmptyGifContainer from './EmptyGifContainer';
 import getTitle from '../../api/getTitle';
 import clearAll from '../../api/clearAll';
 
@@ -45,7 +45,7 @@ const CluesContainer = () => {
     if (gifSources.length) {
       clearAll(gifSources.length);
     }
-    setTitle(getTitle());
+    setTitle(getTitle('oops'));
     // console.log("i'm alive");
     // const gettitle = async () => {
     //   try {
@@ -96,7 +96,7 @@ const CluesContainer = () => {
         ) : (
           <></>
         )}
-        {gifSources.length ? fillGifContainers : <EmptyContainer />}
+        {gifSources.length ? fillGifContainers : <EmptyGifContainer />}
         {/* <GifContainer id="1" title="one" word={title.titleString ? title.titleString : "Loading"}/> */}
       </div>
       <button onClick={loadGifs}>TESTER</button>
