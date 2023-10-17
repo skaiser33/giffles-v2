@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 import books from '../models/books.js';
 import movies from '../models/movies.js';
 import songs from '../models/songs.js';
@@ -10,19 +10,20 @@ const getTitle = (category) => {
   // clearAll(); //***TO BE UNCOMMENTED***
   let titles;
   switch (category) {
-    case 'Movies':
+    case 'movies':
       titles = movies;
       break;
-    case 'Songs':
+    case 'songs':
       titles = songs;
       break;
-    case 'Books':
+    case 'books':
       titles = books;
       break;
     default:
       titles = movies;
   }
-  console.log('selector test' + titles[0]);
+  // console.log('category in getTitle', category);
+  // console.log('titles in getTitle', titles[0]);
   let nonGifText = {};
   let randomIndex, titleString, titleArray;
   let gifWords = []; //words to be converted to gifs will be pushed into this array

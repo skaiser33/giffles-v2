@@ -4,8 +4,8 @@ import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
 import buttonTheme from '../../themes/buttonTheme';
 
-const InteractionContainer = () => {
-  const [selectedCategory, setSelectedCategory] = useState('movies');
+const InteractionContainer = ({ selectedCategory, setSelectedCategory }) => {
+  // const [selectedCategory, setSelectedCategory] = useState('movies');
 
   return (
     <div className='interaction-container'>

@@ -23,7 +23,7 @@ const GifContainer = (props) => {
   //   };
   //   getGifs();
   // }, []);
-  console.log('gif width in GifContainer-->', props.gif.width);
+  // console.log('gif width in GifContainer-->', props.gif.width);
 
   // adjusts height proportionally if images that are too wide
   const imgDisplayHeight =

@@ -7,7 +7,7 @@ import EmptyGifContainer from './EmptyGifContainer';
 import getTitle from '../../api/getTitle';
 import clearAll from '../../api/clearAll';
 
-const CluesContainer = () => {
+const CluesContainer = ({ selectedCategory }) => {
   const [title, setTitle] = useState({
     titleString: [],
     gifWords: [],
@@ -17,7 +17,7 @@ const CluesContainer = () => {
   const [gifSources, setGifSources] = useState([]);
 
   const fillGifContainers = gifSources.map((gifSource, idx) => {
-    console.log(gifSource);
+    // console.log(gifSource);
     return (
       <>
         <GifContainer
@@ -45,7 +45,7 @@ const CluesContainer = () => {
     if (gifSources.length) {
       clearAll(gifSources.length);
     }
-    setTitle(getTitle('oops'));
+    setTitle(getTitle(selectedCategory));
     // console.log("i'm alive");
     // const gettitle = async () => {
     //   try {
@@ -70,14 +70,14 @@ const CluesContainer = () => {
           // console.log(resGifs.data[0]);
           // setGif1(() => resGifs.data[0].embed_url);
           // setGif1(() => res1Gifs.data[0].images.fixed_height.url);
-          console.log('width-->' + resGifs.data[0].images.fixed_height.width);
+          // console.log('width-->' + resGifs.data[0].images.fixed_height.width);
           // fixed height of 200px; width is variable
           return resGifs.data[0].images.fixed_height;
         });
         setGifSources(await Promise.all(gifUrls));
-        console.log('TITLE ---->' + title.titleString);
-        console.log('GIFWORDS ---->' + title.gifWords);
-        console.log('NONGIFTEXT OBJ --->' + title.nonGifText);
+        // console.log('TITLE ---->' + title.titleString);
+        // console.log('GIFWORDS ---->' + title.gifWords);
+        // console.log('NONGIFTEXT OBJ --->' + title.nonGifText);
       } catch (error) {
         console.log(error);
       }
