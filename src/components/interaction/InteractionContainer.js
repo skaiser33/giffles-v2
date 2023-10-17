@@ -13,24 +13,16 @@ const InteractionContainer = ({ selectedCategory, setSelectedCategory }) => {
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
       <ThemeProvider theme={buttonTheme}>
         <NewCluesButton />
-        {/* <Button
-          variant='contained'
-          id='newClue'
-          className='hide'
-          onClick={(e) => console.log('new clues clicked')}
-        > */}
-        {/* New Clues Please!
-        </Button> */}
         <p className='hide' id='is-player-correct'></p>
 
         <form id='answ' className='hide'>
-          <label for='answer'>Guess the title:</label>
+          <label htmlFor='answer'>Guess the title:</label>
           <input type='text' id='answer' name='answer' />
           <input id='answerButton' type='submit' value='Submit Answer' />
         </form>
 
         <form id='nextRoundForm'>
-          <label for='categories'>Choose your category:</label>
+          <label htmlFor='categories'>Choose your category:</label>
           <select
             name='categories'
             id='categories'
