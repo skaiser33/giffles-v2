@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
 import buttonTheme from '../../themes/buttonTheme';
+import NewCluesButton from './NewCluesButton';
 
 const InteractionContainer = ({ selectedCategory, setSelectedCategory }) => {
   // const [selectedCategory, setSelectedCategory] = useState('movies');
@@ -11,9 +12,15 @@ const InteractionContainer = ({ selectedCategory, setSelectedCategory }) => {
     <div className='interaction-container'>
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
       <ThemeProvider theme={buttonTheme}>
-        <Button variant='contained' id='newClue' className='hide'>
-          New Clues Please!
-        </Button>
+        <NewCluesButton />
+        {/* <Button
+          variant='contained'
+          id='newClue'
+          className='hide'
+          onClick={(e) => console.log('new clues clicked')}
+        > */}
+        {/* New Clues Please!
+        </Button> */}
         <p className='hide' id='is-player-correct'></p>
 
         <form id='answ' className='hide'>
