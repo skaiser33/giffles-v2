@@ -5,14 +5,19 @@ import { ThemeProvider } from '@mui/material/styles';
 import buttonTheme from '../../themes/buttonTheme';
 import NewCluesButton from './NewCluesButton';
 
-const InteractionContainer = ({ selectedCategory, setSelectedCategory }) => {
+const InteractionContainer = ({
+  selectedCategory,
+  setSelectedCategory,
+  gifCounter,
+  setGifCounter,
+}) => {
   // const [selectedCategory, setSelectedCategory] = useState('movies');
-
+  // let gifCounter = 0;
   return (
     <div className='interaction-container'>
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
       <ThemeProvider theme={buttonTheme}>
-        <NewCluesButton />
+        <NewCluesButton gifCounter={gifCounter} setGifCounter={setGifCounter} />
         <p className='hide' id='is-player-correct'></p>
 
         <form id='answ' className='hide'>

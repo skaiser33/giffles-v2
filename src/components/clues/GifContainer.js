@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 // import axios from 'axios';
 
-const GifContainer = (props) => {
+const GifContainer = ({ id, title, gif }) => {
   // const [gif1, setGif1] = useState("about:blank")
 
   // useEffect(() => {
@@ -27,13 +27,11 @@ const GifContainer = (props) => {
 
   // adjusts height proportionally if images that are too wide
   const imgDisplayHeight =
-    props.gif.width > 250
-      ? `${(props.gif.height / props.gif.width) * 250}px`
-      : `${props.gif.height}px`;
+    gif.width > 250 ? `${(gif.height / gif.width) * 250}px` : `${gif.height}px`;
 
   return (
     <>
-      {/* <p id={`pre${props.id}`}></p> */}
+      {/* <p id={`pre${id}`}></p> */}
       <div
         className='gif-container'
         // style={{ width: 'min(35%, 300px)' }}
@@ -41,9 +39,9 @@ const GifContainer = (props) => {
         // DELETE PLACEHOLDER COMMENT - to keep prettier happy
       >
         <img
-          id={`gif${props.id}`}
-          title={props.title}
-          src={props.gif.url}
+          id={`gif${id}`}
+          title={title}
+          src={gif.url}
           className='giphy-embed'
           style={{ maxWidth: '250px', maxHeight: imgDisplayHeight }}
         ></img>
