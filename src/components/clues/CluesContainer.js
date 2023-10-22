@@ -7,7 +7,8 @@ import EmptyGifContainer from './EmptyGifContainer';
 import getTitle from '../../api/getTitle';
 import clearAll from '../../api/clearAll';
 
-const CluesContainer = ({ selectedCategory }) => {
+const CluesContainer = ({ selectedCategory, gifCounter }) => {
+  console.log('gifCounter in CluesContainer', gifCounter);
   const [title, setTitle] = useState({
     titleString: [],
     gifWords: [],
@@ -15,6 +16,13 @@ const CluesContainer = ({ selectedCategory }) => {
   });
   // const [gifSources, setGifSources] = useState(["#", "#", "#", "#"])
   const [gifSources, setGifSources] = useState([]);
+
+  useEffect(() => {
+    // *** MUST AVOID CALLING USEEFFECT ON INITIAL RENDER -- RIGHT?
+    // https://stackoverflow.com/questions/53179075/with-useeffect-how-can-i-skip-applying-an-effect-upon-the-initial-render
+    // https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/
+    console.log('useEffect Called, gifCounter is', gifCounter);
+  }, [gifCounter]);
 
   const fillGifContainers = gifSources.map((gifSource, idx) => {
     // console.log(gifSource);
@@ -67,7 +75,7 @@ const CluesContainer = ({ selectedCategory }) => {
             `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${word}&limit=5&offset=0&lang=en`
           );
           const resGifs = await res.data;
-          // console.log(resGifs.data[0]);
+          console.log(resGifs.data);
           // setGif1(() => resGifs.data[0].embed_url);
           // setGif1(() => res1Gifs.data[0].images.fixed_height.url);
           // console.log('width-->' + resGifs.data[0].images.fixed_height.width);

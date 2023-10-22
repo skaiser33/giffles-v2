@@ -10,9 +10,9 @@ const NewCluesButton = ({ gifCounter, setGifCounter }) => {
   };
 
   const handleClick = (e) => {
-    console.log('new clues clicked, g=', gifCounter);
     // gifCounter >= 4 ? (gifCounter = 0) : gifCounter++;
     incrementGifCount();
+    console.log('new clues clicked, g=', gifCounter);
     // gifCounter >= 4
     //   ? {() => setGifCounter(0)}
     //   : {incrementGifCount};
