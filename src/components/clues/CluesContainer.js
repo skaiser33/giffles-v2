@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-import GifContainer from './GifContainer';
+// import GifContainer from './GifContainer';
 import fillGifContainer from '../../api/fillGifContainer';
 import EmptyGifContainer from './EmptyGifContainer';
 import getTitle from '../../api/getTitle';
@@ -16,7 +16,7 @@ const CluesContainer = ({ selectedCategory, gifCounter }) => {
     nonGifText: {},
   });
   // const [gifSources, setGifSources] = useState(["#", "#", "#", "#"])
-  // const [gifData, setGifData] = useState([]);
+  const [gifData, setGifData] = useState([]);
   const [gifSources, setGifSources] = useState([]);
 
   // useEffect(() => {
@@ -37,35 +37,39 @@ const CluesContainer = ({ selectedCategory, gifCounter }) => {
     const getGifs = async () => {
       try {
         // CREATE CONTROL IF title IS EMPTY
-        // const gifDataArray = title.gifWords.map(async (word) => {
-        //   const res = await axios.get(
-        //     `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${word}&limit=5&offset=0&lang=en`
-        //   );
-        //   const resGifs = await res.data;
-        //   // console.log(resGifs.data[0]);
-        //   // fixed height of 200px; width is variable
-        //   return resGifs.data;
-        // });
-        // console.log('gifDataArray', await Promise.all(gifDataArray));
-        // setGifData(await Promise.all(gifDataArray));
-        // console.log('gifData1', gifData);
-        // // if (gifData[0] && gifData[0].images) {
-        // //   setGifSources(gifData[0].images.fixed_height);
-        // // }
-        // ***HOW IT USED TO WORK***
-        const gifUrls = title.gifWords.map(async (word) => {
+
+        // ** OCT 28 ATTEMPT
+        const gifDataArr = title.gifWords.map(async (word) => {
           const res = await axios.get(
             `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${word}&limit=5&offset=0&lang=en`
           );
-          const resGifs = await res.data;
-          console.log(resGifs.data);
+          const gifDataTest = await res.data.data;
+          // console.log('res-->', res);
+          console.log('gifDataTest-->', gifDataTest);
+          // const gifDataTest = await resGifs. data;
+          // console.log('gifDataTest-->', gifDataTest);
           // fixed height of 200px; width is variable
-          return resGifs.data[0].images.fixed_height;
+          // console.log(
+          //   'gifDataArr[0].images.fixed_height',
+          //   gifDataArr[0].images.fixed_height
+          // );
+          return gifDataTest;
         });
-        console.log('gifUrls', gifUrls);
-        setGifSources(await Promise.all(gifUrls));
-        console.log('NONGIFTEXT OBJ --->' + title.nonGifText);
-        // ***END OF HOW IT USED TO WORK***
+
+        // console.log('gifDataArr', gifDataArr);
+        const gifDataArrHelper = await Promise.all(gifDataArr);
+
+        // setGifData(await Promise.all(gifDataArr));
+        setGifData(gifDataArrHelper);
+        // console.log('gifData', gifData);
+        // const gifSourcesHelper = await Promise.all(gifDataArrHelper)
+        // setG
+        if (gifData[0] && gifData[0][0]) {
+          setGifSources(gifData[0][0].images.fixed_height);
+          console.log('gifSources after update is', gifSources);
+        }
+        // console.log('NONGIFTEXT OBJ --->' + title.nonGifText);
+        // ** END OCT 28 ATTEMPT
       } catch (error) {
         console.log(error);
       }
@@ -76,6 +80,19 @@ const CluesContainer = ({ selectedCategory, gifCounter }) => {
   }, [title]);
   // console.log('gifData2', gifData);
   // console.log('gifSources', gifSources);
+  // useEffect(() => {console.log('gifDataChanged'),[gifData]}
+  // useEffect(() => {
+  //   console.log('gifData changed! Called, gifData is', gifData);
+  //   if (gifData[0] && gifData[0][0]) {
+  //     console.log(
+  //       'gifData[0][0].images.fixed_height',
+  //       gifData[0][0].images.fixed_height
+  //     );
+  //     setGifSources(gifData[0][0].images.fixed_height);
+  //   }
+  //   // setGifSources()
+  // }, [gifData]);
+
   return (
     <>
       <div className='clues-container'>
