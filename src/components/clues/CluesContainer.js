@@ -43,31 +43,42 @@ const CluesContainer = ({ selectedCategory, gifCounter }) => {
           const res = await axios.get(
             `https://api.giphy.com/v1/gifs/search?api_key=${process.env.REACT_APP_GIPHY_API_KEY}&q=${word}&limit=5&offset=0&lang=en`
           );
-          const gifDataTest = await res.data.data;
+          const gifDataHelper = await res.data.data;
           // console.log('res-->', res);
-          console.log('gifDataTest-->', gifDataTest);
-          // const gifDataTest = await resGifs. data;
-          // console.log('gifDataTest-->', gifDataTest);
+          console.log('gifDataHelper-->', gifDataHelper);
+          // const gifDataHelper = await resGifs. data;
+          // console.log('gifDataHelper-->', gifDataHelper);
           // fixed height of 200px; width is variable
           // console.log(
           //   'gifDataArr[0].images.fixed_height',
           //   gifDataArr[0].images.fixed_height
           // );
-          return gifDataTest;
+          return gifDataHelper;
         });
 
         // console.log('gifDataArr', gifDataArr);
         const gifDataArrHelper = await Promise.all(gifDataArr);
-
-        // setGifData(await Promise.all(gifDataArr));
         setGifData(gifDataArrHelper);
-        // console.log('gifData', gifData);
+        const gifSourcesHelper = await Promise.all(
+          gifDataArrHelper.map((data) => {
+            // *** TRYING TO FIGURE OUT HOW TO GET RID OF KEY ERROR
+            // const tempObj = data[0].images.fixed_height;
+            // tempObj['key'] = tempObj.url;
+            // console.log('tempObj', tempObj);
+            // return tempObj;
+            return data[0].images.fixed_height;
+          })
+        );
+        // setGifData(await Promise.all(gifDataArr));
+        setGifSources(gifSourcesHelper);
+        // console.log('gifSourcesHelper', gifSourcesHelper);
         // const gifSourcesHelper = await Promise.all(gifDataArrHelper)
         // setG
-        if (gifData[0] && gifData[0][0]) {
-          setGifSources(gifData[0][0].images.fixed_height);
-          console.log('gifSources after update is', gifSources);
-        }
+        // const gifSourcesHelper = [gifData[0][0].images.fixed_height];
+        // if (gifData[0] && gifData[0][0]) {
+        //   setGifSources([gifData[0][0].images.fixed_height]);
+        //   console.log('gifSources after update is', gifSources);
+        // }
         // console.log('NONGIFTEXT OBJ --->' + title.nonGifText);
         // ** END OCT 28 ATTEMPT
       } catch (error) {
@@ -83,12 +94,12 @@ const CluesContainer = ({ selectedCategory, gifCounter }) => {
   // useEffect(() => {console.log('gifDataChanged'),[gifData]}
   // useEffect(() => {
   //   console.log('gifData changed! Called, gifData is', gifData);
-  //   if (gifData[0] && gifData[0][0]) {
-  //     console.log(
-  //       'gifData[0][0].images.fixed_height',
-  //       gifData[0][0].images.fixed_height
+  //   // if (gifData[0] && gifData[0][0]) {
+  //   //   console.log(
+  //   //     'gifData[0][0].images.fixed_height',
+  //   //     gifData[0][0].images.fixed_height
+  //       // setGifSources(gifData[0][0].images.fixed_height);
   //     );
-  //     setGifSources(gifData[0][0].images.fixed_height);
   //   }
   //   // setGifSources()
   // }, [gifData]);
@@ -106,7 +117,7 @@ const CluesContainer = ({ selectedCategory, gifCounter }) => {
         {gifSources.length ? (
           fillGifContainer(title, gifSources)
         ) : (
-          <EmptyGifContainer />
+          <EmptyGifContainer key={`empty-${Math.random()}`} />
         )}
         {/* <GifContainer id="1" title="one" word={title.titleString ? title.titleString : "Loading"}/> */}
       </div>
