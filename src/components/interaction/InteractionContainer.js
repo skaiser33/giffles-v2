@@ -4,15 +4,29 @@ import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
 import buttonTheme from '../../themes/buttonTheme';
 import NewCluesButton from './NewCluesButton';
+import getTitle from '../../api/getTitle';
+import clearAll from '../../api/clearAll';
 
 const InteractionContainer = ({
   selectedCategory,
   setSelectedCategory,
   gifCounter,
   setGifCounter,
+  gifSources,
+  setGifSources,
+  setTitle,
 }) => {
   // const [selectedCategory, setSelectedCategory] = useState('movies');
   // let gifCounter = 0;
+
+  const startNewRound = () => {
+    if (gifSources.length) {
+      clearAll(gifSources.length);
+    }
+    setGifCounter(0);
+    setTitle(getTitle(selectedCategory));
+  };
+
   return (
     <div className='interaction-container'>
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
@@ -49,8 +63,15 @@ const InteractionContainer = ({
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
         </Select> */}
-          <input id='next' type='submit' value="Let's Play Giffles!" />
+          {/* <input id='next' type='submit' value="Let's Play Giffles!" /> */}
         </form>
+        <button
+          id='new-round-button'
+          onClick={startNewRound}
+          // value="Let's Play Giffles!"
+        >
+          Let's Play Giffles!
+        </button>
 
         <div id='score-and-reset'>
           <p className='playerScore'>Your Score: 0</p>

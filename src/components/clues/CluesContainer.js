@@ -8,16 +8,24 @@ import EmptyGifContainer from './EmptyGifContainer';
 import getTitle from '../../api/getTitle';
 import clearAll from '../../api/clearAll';
 
-const CluesContainer = ({ selectedCategory, gifCounter, setGifCounter }) => {
+const CluesContainer = ({
+  selectedCategory,
+  gifCounter,
+  setGifCounter,
+  gifSources,
+  setGifSources,
+  title,
+  setTitle,
+}) => {
   console.log('gifCounter in CluesContainer', gifCounter);
-  const [title, setTitle] = useState({
-    titleString: [],
-    gifWords: [],
-    nonGifText: {},
-  });
-  // const [gifSources, setGifSources] = useState(["#", "#", "#", "#"])
+  // const [title, setTitle] = useState({
+  //   titleString: [],
+  //   gifWords: [],
+  //   nonGifText: {},
+  // });
+
   const [gifData, setGifData] = useState([]);
-  const [gifSources, setGifSources] = useState([]);
+  // const [gifSources, setGifSources] = useState([]);
 
   // useEffect(() => {
   //   // *** MUST AVOID CALLING USEEFFECT ON INITIAL RENDER -- RIGHT?
@@ -26,12 +34,13 @@ const CluesContainer = ({ selectedCategory, gifCounter, setGifCounter }) => {
   //   console.log('useEffect Called, gifCounter is', gifCounter);
   // }, [gifCounter]);
 
-  const loadGifs = () => {
-    if (gifSources.length) {
-      clearAll(gifSources.length);
-    }
-    setTitle(getTitle(selectedCategory));
-  };
+  // const startNewRound = () => {
+  //   if (gifSources.length) {
+  //     clearAll(gifSources.length);
+  //   }
+  //   setGifCounter(0);
+  //   setTitle(getTitle(selectedCategory));
+  // };
 
   // WHEN TITLE CHANGES, FETCH NEW GIFS AND POPULATE GIFCONTAINERS WITH THE FIRST SET OF GIFS
   useEffect(() => {
@@ -98,7 +107,7 @@ const CluesContainer = ({ selectedCategory, gifCounter, setGifCounter }) => {
           <EmptyGifContainer />
         )}
       </div>
-      <button onClick={loadGifs}>TESTER</button>
+      {/* <button onClick={startNewRound}>TESTER</button> */}
     </>
   );
 };
