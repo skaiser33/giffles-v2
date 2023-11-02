@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 // import axios from 'axios';
 
 const GifContainer = ({ id, title, gif }) => {
@@ -36,6 +36,7 @@ const GifContainer = ({ id, title, gif }) => {
         className='gif-container'
         // style={{ width: 'min(35%, 300px)' }}
         style={{ minWidth: '265px', minHeight: '200px' }}
+
         // DELETE PLACEHOLDER COMMENT - to keep prettier happy
       >
         <img
@@ -44,6 +45,7 @@ const GifContainer = ({ id, title, gif }) => {
           src={gif.url}
           className='giphy-embed'
           style={{ maxWidth: '250px', maxHeight: imgDisplayHeight }}
+          alt={title}
         ></img>
       </div>
       {/* <p id="spacer"></p> */}

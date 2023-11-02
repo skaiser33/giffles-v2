@@ -11,6 +11,7 @@ const GameContainer = () => {
       <CluesContainer
         selectedCategory={selectedCategory}
         gifCounter={gifCounter}
+        setGifCounter={setGifCounter}
       />
       <InteractionContainer
         selectedCategory={selectedCategory}

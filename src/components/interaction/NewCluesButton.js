@@ -4,8 +4,9 @@ import Button from '@mui/material/Button';
 
 const NewCluesButton = ({ gifCounter, setGifCounter }) => {
   const incrementGifCount = () => {
-    gifCounter >= 4 ? setGifCounter(0) : setGifCounter(gifCounter + 1);
-    // setGifCounter(gifCounter + 1);
+    // INCREMENTS ABOVE 4 and PERFORM gifCounter % 5 IN CLUESCONTAINER useEffect
+    setGifCounter(gifCounter + 1);
+    // gifCounter >= 4 ? setGifCounter(0) : setGifCounter(gifCounter + 1); OLD WAY
     console.log('gifCounter in button', gifCounter);
   };
 
@@ -13,14 +14,6 @@ const NewCluesButton = ({ gifCounter, setGifCounter }) => {
     // gifCounter >= 4 ? (gifCounter = 0) : gifCounter++;
     incrementGifCount();
     console.log('new clues clicked, g=', gifCounter);
-    // gifCounter >= 4
-    //   ? {() => setGifCounter(0)}
-    //   : {incrementGifCount};
-    // () => setGifCounter(gifCounter + 1);
-    // gifFrame1.src = gif1Array[gifCounter].embed_url;
-    // gifFrame2.src = gif2Array[gifCounter].embed_url;
-    // if (gifWords.length >= 3) gifFrame3.src = gif3Array[gifCounter].embed_url;
-    // if (gifWords.length === 4) gifFrame4.src = gif4Array[gifCounter].embed_url;
   };
 
   return (
