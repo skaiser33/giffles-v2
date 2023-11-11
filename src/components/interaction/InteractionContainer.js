@@ -15,9 +15,14 @@ const InteractionContainer = ({
   gifSources,
   setGifSources,
   setTitle,
+  countingDown,
+  setCountingDown,
+  score,
+  setScore,
 }) => {
   // const [selectedCategory, setSelectedCategory] = useState('movies');
   // let gifCounter = 0;
+  const startTimer = () => setCountingDown((prev) => !prev);
 
   const startNewRound = () => {
     if (gifSources.length) {
@@ -25,7 +30,11 @@ const InteractionContainer = ({
     }
     setGifCounter(0);
     setTitle(getTitle(selectedCategory));
+    startTimer();
   };
+
+  let answerInputHidden = countingDown ? '' : 'hide';
+  // let answerInputHidden = '';
 
   return (
     <div className='interaction-container'>
@@ -34,7 +43,7 @@ const InteractionContainer = ({
         <NewCluesButton gifCounter={gifCounter} setGifCounter={setGifCounter} />
         <p className='hide' id='is-player-correct'></p>
 
-        <form id='answ' className='hide'>
+        <form id='answ' className={answerInputHidden}>
           <label htmlFor='answer'>Guess the title:</label>
           <input type='text' id='answer' name='answer' />
           <input id='answerButton' type='submit' value='Submit Answer' />
@@ -74,7 +83,7 @@ const InteractionContainer = ({
         </button>
 
         <div id='score-and-reset'>
-          <p className='playerScore'>Your Score: 0</p>
+          <p className='playerScore'>Your Score: {score}</p>
           {/* <button id="newPlayer" className="hide">New Player / Reset Game</button> */}
           <Button
             variant='contained'

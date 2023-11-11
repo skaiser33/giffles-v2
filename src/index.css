@@ -213,9 +213,7 @@ small {
   color: white;
 }
 
-.hide {
-  display: none;
-}
+
 
 .show-description p {
   height: 270px;
@@ -223,7 +221,12 @@ small {
 
 .show-description small {
   opacity: 1;
-} */
+}
+*/
+
+.hide {
+  display: none;
+}
 
 #timer {
   position: fixed;

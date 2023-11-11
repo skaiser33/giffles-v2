@@ -5,6 +5,8 @@ import InteractionContainer from './interaction/InteractionContainer';
 import Instructions from './Instructions';
 
 const GameContainer = () => {
+  const [secondsLeft, setSecondsLeft] = useState(30);
+  const [countingDown, setCountingDown] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('movies');
   const [gifCounter, setGifCounter] = useState(0);
   const [title, setTitle] = useState({
@@ -13,10 +15,16 @@ const GameContainer = () => {
     nonGifText: {},
   });
   const [gifSources, setGifSources] = useState([]);
+  const [score, setScore] = useState(0);
 
   return (
     <div className='game-container'>
-      <Timer />
+      <Timer
+        secondsLeft={secondsLeft}
+        setSecondsLeft={setSecondsLeft}
+        countingDown={countingDown}
+        setCountingDown={setCountingDown}
+      />
       <CluesContainer
         selectedCategory={selectedCategory}
         gifCounter={gifCounter}
@@ -34,6 +42,10 @@ const GameContainer = () => {
         gifSources={gifSources}
         setGifSources={setGifSources}
         setTitle={setTitle}
+        countingDown={countingDown}
+        setCountingDown={setCountingDown}
+        score={score}
+        setScore={setScore}
       />
       <Instructions />
     </div>
