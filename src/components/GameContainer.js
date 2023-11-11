@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Timer from './Timer';
 import CluesContainer from './clues/CluesContainer';
 import InteractionContainer from './interaction/InteractionContainer';
 import Instructions from './Instructions';
@@ -15,6 +16,7 @@ const GameContainer = () => {
 
   return (
     <div className='game-container'>
+      <Timer />
       <CluesContainer
         selectedCategory={selectedCategory}
         gifCounter={gifCounter}

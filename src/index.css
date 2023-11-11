@@ -225,11 +225,11 @@ small {
   opacity: 1;
 } */
 
-/* #timer {
+#timer {
   position: fixed;
   top: 5px;
   right: 10px;
-} */
+}
 
 /* #newClue {
   font-size: 25px;
