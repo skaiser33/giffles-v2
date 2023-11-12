@@ -1,11 +1,12 @@
 // import React from 'react';
-// import { useState } from 'react';
+import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
 import buttonTheme from '../../themes/buttonTheme';
 import NewCluesButton from './NewCluesButton';
 import getTitle from '../../api/getTitle';
 import clearAll from '../../api/clearAll';
+import hideAfterAnswer from '../../api/hideAfterAnswer';
 
 const InteractionContainer = ({
   selectedCategory,
@@ -14,12 +15,14 @@ const InteractionContainer = ({
   setGifCounter,
   gifSources,
   setGifSources,
+  title,
   setTitle,
   countingDown,
   setCountingDown,
   score,
   setScore,
 }) => {
+  const [guess, setGuess] = useState('');
   // const [selectedCategory, setSelectedCategory] = useState('movies');
   // let gifCounter = 0;
   const startTimer = () => setCountingDown((prev) => !prev);
@@ -36,6 +39,36 @@ const InteractionContainer = ({
   let answerInputHidden = countingDown ? '' : 'hide';
   // let answerInputHidden = '';
 
+  const isPlayerCorrect = (e) => {
+    e.preventDefault();
+    // console.log('answersubmit e.target.answer.value is', e.target.answer.value);
+    console.log('answersubmit guess is', guess);
+    // guess = answerInput.value;
+    hideAfterAnswer();
+    if (
+      guess.toLowerCase() === title.titleString ||
+      guess.toLowerCase() === title.gifWords.join(' ')
+      // guess.toLowerCase() === masterArray[randomIndex].toLowerCase() ||
+      // guess.toLowerCase() === gifWords.join(' ')
+    ) {
+      console.log('guessed right');
+      // isPlayerCorrect.innerHTML = `Correct! You earned ${
+      //   100 + seconds
+      // } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`;
+      // pScore += 100 + seconds;
+      // playerScore.innerHTML = `Your Score: ${pScore}`;
+      // clearBetweenGifs();
+      // showWinnerGifs();
+    } else {
+      console.log('guess wrong');
+
+      // isPlayerCorrect.innerHTML = `Yeah...no.<br>The correct answer was <em>${masterArray[randomIndex]}.</em>`;
+      // clearBetweenGifs();
+      // showLoserGifs();
+    }
+    setGuess('');
+  };
+
   return (
     <div className='interaction-container'>
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
@@ -43,10 +76,28 @@ const InteractionContainer = ({
         <NewCluesButton gifCounter={gifCounter} setGifCounter={setGifCounter} />
         <p className='hide' id='is-player-correct'></p>
 
-        <form id='answ' className={answerInputHidden}>
+        <form
+          id='answ'
+          onSubmit={isPlayerCorrect}
+          className={answerInputHidden}
+        >
           <label htmlFor='answer'>Guess the title:</label>
-          <input type='text' id='answer' name='answer' />
-          <input id='answerButton' type='submit' value='Submit Answer' />
+          <input
+            type='text'
+            id='answer'
+            name='answer'
+            value={guess}
+            onChange={(e) => {
+              setGuess(e.target.value);
+            }}
+          />
+          <button
+            id='answerButton'
+            type='submit'
+            // value=''
+          >
+            Submit Answer
+          </button>
         </form>
 
         <form id='nextRoundForm'>

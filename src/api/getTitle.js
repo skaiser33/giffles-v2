@@ -91,7 +91,8 @@ const getTitle = (category) => {
     // while (gifWords.length < 2 || gifWords.length > 4) {
     //   gifWords = getTitle();
   }
-
+  console.log('to help guess, the titleString is', titleString);
+  console.log('to help guess, gifWords.join is', gifWords.join(' '));
   return {
     titleString: titleString,
     gifWords: gifWords,
