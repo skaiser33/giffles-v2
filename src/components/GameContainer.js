@@ -35,6 +35,7 @@ const GameContainer = () => {
         setTitle={setTitle}
       />
       <InteractionContainer
+        secondsLeft={secondsLeft}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         gifCounter={gifCounter}

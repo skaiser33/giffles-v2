@@ -9,6 +9,7 @@ import clearAll from '../../api/clearAll';
 import hideAfterAnswer from '../../api/hideAfterAnswer';
 
 const InteractionContainer = ({
+  secondsLeft,
   selectedCategory,
   setSelectedCategory,
   gifCounter,
@@ -23,6 +24,9 @@ const InteractionContainer = ({
   setScore,
 }) => {
   const [guess, setGuess] = useState('');
+  const [userFeedback, setUserFeedback] = useState('test');
+  const [userFeedbackHidden, setUserFeedbackHidden] = useState('hide');
+
   // const [selectedCategory, setSelectedCategory] = useState('movies');
   // let gifCounter = 0;
   const startTimer = () => setCountingDown((prev) => !prev);
@@ -31,27 +35,38 @@ const InteractionContainer = ({
     if (gifSources.length) {
       clearAll(gifSources.length);
     }
+    setUserFeedbackHidden('hide');
     setGifCounter(0);
     setTitle(getTitle(selectedCategory));
     startTimer();
   };
 
   let answerInputHidden = countingDown ? '' : 'hide';
-  // let answerInputHidden = '';
 
   const isPlayerCorrect = (e) => {
     e.preventDefault();
+    // clearInterval(timer);
     // console.log('answersubmit e.target.answer.value is', e.target.answer.value);
     console.log('answersubmit guess is', guess);
     // guess = answerInput.value;
     hideAfterAnswer();
+    setUserFeedbackHidden('');
     if (
       guess.toLowerCase() === title.titleString ||
       guess.toLowerCase() === title.gifWords.join(' ')
       // guess.toLowerCase() === masterArray[randomIndex].toLowerCase() ||
       // guess.toLowerCase() === gifWords.join(' ')
     ) {
-      console.log('guessed right');
+      console.log(
+        `Correct! You earned ${
+          100 + secondsLeft
+        } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`
+      );
+      setUserFeedback(
+        `Correct! You earned ${
+          100 + secondsLeft
+        } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`
+      );
       // isPlayerCorrect.innerHTML = `Correct! You earned ${
       //   100 + seconds
       // } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`;
@@ -60,7 +75,12 @@ const InteractionContainer = ({
       // clearBetweenGifs();
       // showWinnerGifs();
     } else {
-      console.log('guess wrong');
+      console.log(
+        `Yeah...no. <br>The correct answer was <em>${title.titleString}.</em>`
+      );
+      setUserFeedback(
+        `Yeah...no. <br>The correct answer was <em>${title.titleString}.</em>`
+      );
 
       // isPlayerCorrect.innerHTML = `Yeah...no.<br>The correct answer was <em>${masterArray[randomIndex]}.</em>`;
       // clearBetweenGifs();
@@ -73,8 +93,11 @@ const InteractionContainer = ({
     <div className='interaction-container'>
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
       <ThemeProvider theme={buttonTheme}>
+        {/* UserFeedback (Win/lose message w answer // Error message)CORRECT/INCORRECT/ERROR DISPLAY GOES HERE */}
         <NewCluesButton gifCounter={gifCounter} setGifCounter={setGifCounter} />
-        <p className='hide' id='is-player-correct'></p>
+        <p className={userFeedbackHidden} id='is-player-correct'>
+          {userFeedback}
+        </p>
 
         <form
           id='answ'
