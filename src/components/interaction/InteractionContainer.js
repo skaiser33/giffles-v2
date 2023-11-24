@@ -22,10 +22,12 @@ const InteractionContainer = ({
   setCountingDown,
   score,
   setScore,
+  playerFeedback,
+  setPlayerFeedback,
+  playerFeedbackHidden,
+  setPlayerFeedbackHidden,
 }) => {
   const [guess, setGuess] = useState('');
-  const [userFeedback, setUserFeedback] = useState('test');
-  const [userFeedbackHidden, setUserFeedbackHidden] = useState('hide');
 
   // const [selectedCategory, setSelectedCategory] = useState('movies');
   // let gifCounter = 0;
@@ -35,7 +37,7 @@ const InteractionContainer = ({
     if (gifSources.length) {
       clearAll(gifSources.length);
     }
-    setUserFeedbackHidden('hide');
+    setPlayerFeedbackHidden('hide');
     setGifCounter(0);
     setTitle(getTitle(selectedCategory));
     startTimer();
@@ -50,7 +52,7 @@ const InteractionContainer = ({
     console.log('answersubmit guess is', guess);
     // guess = answerInput.value;
     hideAfterAnswer();
-    setUserFeedbackHidden('');
+    setPlayerFeedbackHidden('');
     if (
       guess.toLowerCase() === title.titleString ||
       guess.toLowerCase() === title.gifWords.join(' ')
@@ -62,7 +64,7 @@ const InteractionContainer = ({
           100 + secondsLeft
         } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`
       );
-      setUserFeedback(
+      setPlayerFeedback(
         `Correct! You earned ${
           100 + secondsLeft
         } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`
@@ -78,7 +80,7 @@ const InteractionContainer = ({
       console.log(
         `Yeah...no. <br>The correct answer was <em>${title.titleString}.</em>`
       );
-      setUserFeedback(
+      setPlayerFeedback(
         `Yeah...no. <br>The correct answer was <em>${title.titleString}.</em>`
       );
 
@@ -93,10 +95,9 @@ const InteractionContainer = ({
     <div className='interaction-container'>
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
       <ThemeProvider theme={buttonTheme}>
-        {/* UserFeedback (Win/lose message w answer // Error message)CORRECT/INCORRECT/ERROR DISPLAY GOES HERE */}
         <NewCluesButton gifCounter={gifCounter} setGifCounter={setGifCounter} />
-        <p className={userFeedbackHidden} id='is-player-correct'>
-          {userFeedback}
+        <p className={playerFeedbackHidden} id='is-player-correct'>
+          {playerFeedback}
         </p>
 
         <form

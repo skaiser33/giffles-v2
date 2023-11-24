@@ -16,6 +16,8 @@ const GameContainer = () => {
   });
   const [gifSources, setGifSources] = useState([]);
   const [score, setScore] = useState(0);
+  const [playerFeedback, setPlayerFeedback] = useState('test');
+  const [playerFeedbackHidden, setPlayerFeedbackHidden] = useState('hide');
 
   return (
     <div className='game-container'>
@@ -24,6 +26,11 @@ const GameContainer = () => {
         setSecondsLeft={setSecondsLeft}
         countingDown={countingDown}
         setCountingDown={setCountingDown}
+        playerFeedback={playerFeedback}
+        setPlayerFeedback={setPlayerFeedback}
+        playerFeedbackHidden={playerFeedbackHidden}
+        setPlayerFeedbackHidden={setPlayerFeedbackHidden}
+        title={title}
       />
       <CluesContainer
         selectedCategory={selectedCategory}
@@ -48,6 +55,10 @@ const GameContainer = () => {
         setCountingDown={setCountingDown}
         score={score}
         setScore={setScore}
+        playerFeedback={playerFeedback}
+        setPlayerFeedback={setPlayerFeedback}
+        playerFeedbackHidden={playerFeedbackHidden}
+        setPlayerFeedbackHidden={setPlayerFeedbackHidden}
       />
       <Instructions />
     </div>

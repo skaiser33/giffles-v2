@@ -6,6 +6,11 @@ const Timer = ({
   setSecondsLeft,
   countingDown,
   setCountingDown,
+  playerFeedback,
+  setPlayerFeedback,
+  playerFeedbackHidden,
+  setPlayerFeedbackHidden,
+  title,
 }) => {
   // const intervalRef = useRef(null);
 
@@ -29,6 +34,13 @@ const Timer = ({
     } else {
       clearInterval(timer);
       hideAfterAnswer();
+      if (title.titleString.length) {
+        console.log('title in timer', title.titleString);
+        setPlayerFeedback(
+          `You're a little slow on the draw.<br>The correct answer was <em>${title.titleString}.</em>`
+        );
+        setPlayerFeedbackHidden('');
+      }
       // isPlayerCorrect.innerHTML = `You're a little slow on the draw.<br>The correct answer was <em>${masterArray[randomIndex]}.</em>`;
       // showLoserGifs();
       // clearBetweenGifs();
