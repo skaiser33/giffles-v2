@@ -5,7 +5,6 @@ import buttonTheme from '../../themes/buttonTheme';
 import NewCluesButton from './NewCluesButton';
 import getTitle from '../../api/getTitle';
 import clearAll from '../../api/clearAll';
-import hideAfterAnswer from '../../api/hideAfterAnswer';
 
 const InteractionContainer = ({
   countingDown,
@@ -17,6 +16,7 @@ const InteractionContainer = ({
   setPlayerFeedback,
   playerFeedbackHidden,
   secondsLeft,
+  setSecondsLeft,
   selectedCategory,
   setSelectedCategory,
   title,
@@ -42,11 +42,8 @@ const InteractionContainer = ({
 
   const isPlayerCorrect = (e) => {
     e.preventDefault();
-    // clearInterval(timer);
-    // console.log('answersubmit e.target.answer.value is', e.target.answer.value);
-    // console.log('answersubmit guess is', guess);
-    // guess = answerInput.value;
-    hideAfterAnswer();
+    setCountingDown(false);
+    setSecondsLeft(15);
     setPlayerFeedbackHidden('');
     if (
       guess.toLowerCase() === title.titleString ||
@@ -82,7 +79,12 @@ const InteractionContainer = ({
     <div className='interaction-container'>
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
       <ThemeProvider theme={buttonTheme}>
-        <NewCluesButton gifCounter={gifCounter} setGifCounter={setGifCounter} />
+        <div className={answerInputHidden}>
+          <NewCluesButton
+            gifCounter={gifCounter}
+            setGifCounter={setGifCounter}
+          />
+        </div>
         <p className={playerFeedbackHidden} id='is-player-correct'>
           {playerFeedback}
         </p>
@@ -136,13 +138,16 @@ const InteractionContainer = ({
         </Select> */}
           {/* <input id='next' type='submit' value="Let's Play Giffles!" /> */}
         </form>
-        <button
-          id='new-round-button'
-          onClick={startNewRound}
-          // value="Let's Play Giffles!"
-        >
-          Let's Play Giffles!
-        </button>
+        <div>
+          <Button
+            variant='contained'
+            id='new-round-button'
+            onClick={startNewRound}
+            // value="Let's Play Giffles!"
+          >
+            Let's Play Giffles!
+          </Button>
+        </div>
 
         <div id='score-and-reset'>
           <p className='playerScore'>Your Score: {score}</p>

@@ -20,7 +20,6 @@ const NewCluesButton = ({ gifCounter, setGifCounter }) => {
     <Button
       variant='contained'
       id='newClue'
-      className='hide'
       onClick={handleClick}
       // onClick={incrementGifCount}
     >

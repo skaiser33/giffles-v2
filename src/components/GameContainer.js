@@ -11,7 +11,7 @@ const GameContainer = () => {
   const [playerFeedback, setPlayerFeedback] = useState('test');
   const [playerFeedbackHidden, setPlayerFeedbackHidden] = useState('hide');
   const [score, setScore] = useState(0);
-  const [secondsLeft, setSecondsLeft] = useState(30);
+  const [secondsLeft, setSecondsLeft] = useState(15);
   const [selectedCategory, setSelectedCategory] = useState('movies');
   const [title, setTitle] = useState({
     titleString: [],
@@ -55,6 +55,7 @@ const GameContainer = () => {
         score={score}
         setScore={setScore}
         secondsLeft={secondsLeft}
+        setSecondsLeft={setSecondsLeft}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
         title={title}

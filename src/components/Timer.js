@@ -1,27 +1,28 @@
-import React, { useState, useRef, useEffect } from 'react';
-import hideAfterAnswer from '../api/hideAfterAnswer';
+import React, { useEffect } from 'react';
 
 const Timer = ({
   secondsLeft,
   setSecondsLeft,
   countingDown,
   setCountingDown,
-  playerFeedback,
   setPlayerFeedback,
-  playerFeedbackHidden,
   setPlayerFeedbackHidden,
   title,
 }) => {
-  // const intervalRef = useRef(null);
-
   const decreaseSeconds = () => {
     setSecondsLeft((prev) => {
-      if (prev > 0) {
+      if (prev > 1) {
         return --prev;
       } else {
         setCountingDown(false);
+        if (title.titleString.length) {
+          setPlayerFeedback(
+            `You're a little slow on the draw.<br>The correct answer was <em>${title.titleString}.</em>`
+          );
+          setPlayerFeedbackHidden('');
+        }
         console.log("time's up");
-        return 30;
+        return 15;
       }
     });
   };
@@ -33,14 +34,7 @@ const Timer = ({
       // timer.classList.remove('hide');
     } else {
       clearInterval(timer);
-      hideAfterAnswer();
-      if (title.titleString.length) {
-        console.log('title in timer', title.titleString);
-        setPlayerFeedback(
-          `You're a little slow on the draw.<br>The correct answer was <em>${title.titleString}.</em>`
-        );
-        setPlayerFeedbackHidden('');
-      }
+
       // isPlayerCorrect.innerHTML = `You're a little slow on the draw.<br>The correct answer was <em>${masterArray[randomIndex]}.</em>`;
       // showLoserGifs();
       // clearBetweenGifs();
