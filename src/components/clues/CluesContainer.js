@@ -5,19 +5,17 @@ import axios from 'axios';
 // import GifContainer from './GifContainer';
 import fillGifContainer from '../../api/fillGifContainer';
 import EmptyGifContainer from './EmptyGifContainer';
-import getTitle from '../../api/getTitle';
-import clearAll from '../../api/clearAll';
 
 const CluesContainer = ({
-  selectedCategory,
   gifCounter,
   setGifCounter,
   gifSources,
   setGifSources,
+  selectedCategory,
   title,
   setTitle,
 }) => {
-  console.log('gifCounter in CluesContainer', gifCounter);
+  // console.log('gifCounter in CluesContainer', gifCounter);
   // const [title, setTitle] = useState({
   //   titleString: [],
   //   gifWords: [],
@@ -74,6 +72,7 @@ const CluesContainer = ({
         setGifSources(gifSourcesHelper);
       } catch (error) {
         console.log(error);
+        // SHOULD I JUST USE respondToError function here?
       }
     };
     getGifs();
@@ -107,7 +106,6 @@ const CluesContainer = ({
           <EmptyGifContainer />
         )}
       </div>
-      {/* <button onClick={startNewRound}>TESTER</button> */}
     </>
   );
 };

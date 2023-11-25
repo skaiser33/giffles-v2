@@ -86,13 +86,13 @@ const getTitle = (category) => {
     for (let y = 1; y <= gifWords.length; y++) {
       if (gifWords[y] === null) respondToError();
     }
-    console.log('getTitle() GIFWORDS ---->' + gifWords); // logs the full title
+    // console.log('getTitle() GIFWORDS ---->' + gifWords); // logs the full title
     //If title length is too short / too long, pick another title
     // while (gifWords.length < 2 || gifWords.length > 4) {
     //   gifWords = getTitle();
   }
   console.log('to help guess, the titleString is', titleString);
-  console.log('to help guess, gifWords.join is', gifWords.join(' '));
+  // console.log('to help guess, gifWords.join is', gifWords.join(' '));
   return {
     titleString: titleString,
     gifWords: gifWords,

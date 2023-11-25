@@ -1,4 +1,3 @@
-// import React from 'react';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
@@ -9,28 +8,24 @@ import clearAll from '../../api/clearAll';
 import hideAfterAnswer from '../../api/hideAfterAnswer';
 
 const InteractionContainer = ({
-  secondsLeft,
-  selectedCategory,
-  setSelectedCategory,
+  countingDown,
+  setCountingDown,
   gifCounter,
   setGifCounter,
   gifSources,
-  setGifSources,
-  title,
-  setTitle,
-  countingDown,
-  setCountingDown,
-  score,
-  setScore,
   playerFeedback,
   setPlayerFeedback,
   playerFeedbackHidden,
+  secondsLeft,
+  selectedCategory,
+  setSelectedCategory,
+  title,
+  setTitle,
+  score,
   setPlayerFeedbackHidden,
 }) => {
   const [guess, setGuess] = useState('');
 
-  // const [selectedCategory, setSelectedCategory] = useState('movies');
-  // let gifCounter = 0;
   const startTimer = () => setCountingDown((prev) => !prev);
 
   const startNewRound = () => {
@@ -49,7 +44,7 @@ const InteractionContainer = ({
     e.preventDefault();
     // clearInterval(timer);
     // console.log('answersubmit e.target.answer.value is', e.target.answer.value);
-    console.log('answersubmit guess is', guess);
+    // console.log('answersubmit guess is', guess);
     // guess = answerInput.value;
     hideAfterAnswer();
     setPlayerFeedbackHidden('');
@@ -59,11 +54,6 @@ const InteractionContainer = ({
       // guess.toLowerCase() === masterArray[randomIndex].toLowerCase() ||
       // guess.toLowerCase() === gifWords.join(' ')
     ) {
-      console.log(
-        `Correct! You earned ${
-          100 + secondsLeft
-        } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`
-      );
       setPlayerFeedback(
         `Correct! You earned ${
           100 + secondsLeft
@@ -77,9 +67,6 @@ const InteractionContainer = ({
       // clearBetweenGifs();
       // showWinnerGifs();
     } else {
-      console.log(
-        `Yeah...no. <br>The correct answer was <em>${title.titleString}.</em>`
-      );
       setPlayerFeedback(
         `Yeah...no. <br>The correct answer was <em>${title.titleString}.</em>`
       );

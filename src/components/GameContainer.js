@@ -5,60 +5,60 @@ import InteractionContainer from './interaction/InteractionContainer';
 import Instructions from './Instructions';
 
 const GameContainer = () => {
-  const [secondsLeft, setSecondsLeft] = useState(30);
   const [countingDown, setCountingDown] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('movies');
   const [gifCounter, setGifCounter] = useState(0);
+  const [gifSources, setGifSources] = useState([]);
+  const [playerFeedback, setPlayerFeedback] = useState('test');
+  const [playerFeedbackHidden, setPlayerFeedbackHidden] = useState('hide');
+  const [score, setScore] = useState(0);
+  const [secondsLeft, setSecondsLeft] = useState(30);
+  const [selectedCategory, setSelectedCategory] = useState('movies');
   const [title, setTitle] = useState({
     titleString: [],
     gifWords: [],
     nonGifText: {},
   });
-  const [gifSources, setGifSources] = useState([]);
-  const [score, setScore] = useState(0);
-  const [playerFeedback, setPlayerFeedback] = useState('test');
-  const [playerFeedbackHidden, setPlayerFeedbackHidden] = useState('hide');
 
   return (
     <div className='game-container'>
       <Timer
-        secondsLeft={secondsLeft}
-        setSecondsLeft={setSecondsLeft}
         countingDown={countingDown}
         setCountingDown={setCountingDown}
         playerFeedback={playerFeedback}
         setPlayerFeedback={setPlayerFeedback}
         playerFeedbackHidden={playerFeedbackHidden}
         setPlayerFeedbackHidden={setPlayerFeedbackHidden}
+        secondsLeft={secondsLeft}
+        setSecondsLeft={setSecondsLeft}
         title={title}
       />
       <CluesContainer
-        selectedCategory={selectedCategory}
         gifCounter={gifCounter}
         setGifCounter={setGifCounter}
         gifSources={gifSources}
         setGifSources={setGifSources}
+        selectedCategory={selectedCategory}
         title={title}
         setTitle={setTitle}
       />
       <InteractionContainer
-        secondsLeft={secondsLeft}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
+        countingDown={countingDown}
+        setCountingDown={setCountingDown}
         gifCounter={gifCounter}
         setGifCounter={setGifCounter}
         gifSources={gifSources}
         setGifSources={setGifSources}
-        title={title}
-        setTitle={setTitle}
-        countingDown={countingDown}
-        setCountingDown={setCountingDown}
-        score={score}
-        setScore={setScore}
         playerFeedback={playerFeedback}
         setPlayerFeedback={setPlayerFeedback}
         playerFeedbackHidden={playerFeedbackHidden}
         setPlayerFeedbackHidden={setPlayerFeedbackHidden}
+        score={score}
+        setScore={setScore}
+        secondsLeft={secondsLeft}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        title={title}
+        setTitle={setTitle}
       />
       <Instructions />
     </div>

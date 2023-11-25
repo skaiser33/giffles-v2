@@ -7,7 +7,7 @@ const NewCluesButton = ({ gifCounter, setGifCounter }) => {
     // INCREMENTS ABOVE 4 and PERFORM gifCounter % 5 IN CLUESCONTAINER useEffect
     setGifCounter(gifCounter + 1);
     // gifCounter >= 4 ? setGifCounter(0) : setGifCounter(gifCounter + 1); OLD WAY
-    console.log('gifCounter in button', gifCounter);
+    // console.log('gifCounter in button', gifCounter);
   };
 
   const handleClick = (e) => {
