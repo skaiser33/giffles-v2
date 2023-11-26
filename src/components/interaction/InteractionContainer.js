@@ -35,7 +35,9 @@ const InteractionContainer = ({
     }
     setPlayerFeedbackHidden('hide');
     setGifCounter(0);
-    setTitle(getTitle(selectedCategory));
+    setTitle(
+      getTitle(selectedCategory, setPlayerFeedback, setPlayerFeedbackHidden)
+    );
     startTimer();
   };
 

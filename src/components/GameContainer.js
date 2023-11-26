@@ -37,6 +37,8 @@ const GameContainer = () => {
         setGifCounter={setGifCounter}
         gifSources={gifSources}
         setGifSources={setGifSources}
+        setPlayerFeedback={setPlayerFeedback}
+        setPlayerFeedbackHidden={setPlayerFeedbackHidden}
         selectedCategory={selectedCategory}
         title={title}
         setTitle={setTitle}

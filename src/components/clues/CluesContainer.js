@@ -2,18 +2,18 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-// import GifContainer from './GifContainer';
 import fillGifContainer from '../../logic/fillGifContainer';
 import EmptyGifContainer from './EmptyGifContainer';
+import respondToError from '../../logic/respondToError';
 
 const CluesContainer = ({
   gifCounter,
   setGifCounter,
   gifSources,
+  setPlayerFeedback,
+  setPlayerFeedbackHidden,
   setGifSources,
-  selectedCategory,
   title,
-  setTitle,
 }) => {
   // console.log('gifCounter in CluesContainer', gifCounter);
   // const [title, setTitle] = useState({
@@ -71,8 +71,11 @@ const CluesContainer = ({
         );
         setGifSources(gifSourcesHelper);
       } catch (error) {
-        console.log(error);
-        // SHOULD I JUST USE respondToError function here?
+        respondToError(
+          `getGifs Error ${error}`,
+          setPlayerFeedback,
+          setPlayerFeedbackHidden
+        );
       }
     };
     getGifs();
