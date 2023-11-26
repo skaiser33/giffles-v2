@@ -3,8 +3,8 @@ import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
 import buttonTheme from '../../themes/buttonTheme';
 import NewCluesButton from './NewCluesButton';
-import getTitle from '../../api/getTitle';
-import clearAll from '../../api/clearAll';
+import getTitle from '../../logic/getTitle';
+import clearAll from '../../logic/clearAll';
 
 const InteractionContainer = ({
   countingDown,
@@ -37,6 +37,11 @@ const InteractionContainer = ({
     setGifCounter(0);
     setTitle(getTitle(selectedCategory));
     startTimer();
+  };
+
+  const startNewPlayer = () => {
+    setScore(0);
+    startNewRound();
   };
 
   let hiddenBetweenRounds = countingDown ? 'show' : 'hide';
@@ -161,6 +166,7 @@ const InteractionContainer = ({
             color='secondary'
             id='newPlayer'
             className='hide'
+            onClick={startNewPlayer}
           >
             New Player / Reset Game
           </Button>

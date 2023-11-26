@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 // import GifContainer from './GifContainer';
-import fillGifContainer from '../../api/fillGifContainer';
+import fillGifContainer from '../../logic/fillGifContainer';
 import EmptyGifContainer from './EmptyGifContainer';
 
 const CluesContainer = ({
