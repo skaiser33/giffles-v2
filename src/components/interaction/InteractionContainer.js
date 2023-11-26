@@ -15,6 +15,7 @@ const InteractionContainer = ({
   playerFeedback,
   setPlayerFeedback,
   playerFeedbackHidden,
+  setPlayerFeedbackHidden,
   secondsLeft,
   setSecondsLeft,
   selectedCategory,
@@ -22,7 +23,7 @@ const InteractionContainer = ({
   title,
   setTitle,
   score,
-  setPlayerFeedbackHidden,
+  setScore,
 }) => {
   const [guess, setGuess] = useState('');
 
@@ -38,37 +39,38 @@ const InteractionContainer = ({
     startTimer();
   };
 
-  let answerInputHidden = countingDown ? '' : 'hide';
+  let hiddenBetweenRounds = countingDown ? 'show' : 'hide';
+
+  let hiddenDuringPlay = countingDown ? 'hide' : 'show';
 
   const isPlayerCorrect = (e) => {
     e.preventDefault();
     setCountingDown(false);
     setSecondsLeft(15);
     setPlayerFeedbackHidden('');
+    // if player is CORRECT
     if (
       guess.toLowerCase() === title.titleString ||
       guess.toLowerCase() === title.gifWords.join(' ')
       // guess.toLowerCase() === masterArray[randomIndex].toLowerCase() ||
       // guess.toLowerCase() === gifWords.join(' ')
     ) {
+      setScore((prev) => prev + 100 + secondsLeft);
       setPlayerFeedback(
         `Correct! You earned ${
           100 + secondsLeft
         } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`
       );
-      // isPlayerCorrect.innerHTML = `Correct! You earned ${
-      //   100 + seconds
-      // } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`;
+
       // pScore += 100 + seconds;
       // playerScore.innerHTML = `Your Score: ${pScore}`;
       // clearBetweenGifs();
       // showWinnerGifs();
+      // if player is INCORRECT
     } else {
       setPlayerFeedback(
         `Yeah...no. <br>The correct answer was <em>${title.titleString}.</em>`
       );
-
-      // isPlayerCorrect.innerHTML = `Yeah...no.<br>The correct answer was <em>${masterArray[randomIndex]}.</em>`;
       // clearBetweenGifs();
       // showLoserGifs();
     }
@@ -79,7 +81,7 @@ const InteractionContainer = ({
     <div className='interaction-container'>
       {/* <button id="newClue" className="hide">New Clues Please!</button> */}
       <ThemeProvider theme={buttonTheme}>
-        <div className={answerInputHidden}>
+        <div className={hiddenBetweenRounds}>
           <NewCluesButton
             gifCounter={gifCounter}
             setGifCounter={setGifCounter}
@@ -92,7 +94,7 @@ const InteractionContainer = ({
         <form
           id='answ'
           onSubmit={isPlayerCorrect}
-          className={answerInputHidden}
+          className={hiddenBetweenRounds}
         >
           <label htmlFor='answer'>Guess the title:</label>
           <input
@@ -113,7 +115,7 @@ const InteractionContainer = ({
           </button>
         </form>
 
-        <form id='nextRoundForm'>
+        <form id='nextRoundForm' className={hiddenDuringPlay}>
           <label htmlFor='categories'>Choose your category:</label>
           <select
             name='categories'
@@ -138,13 +140,15 @@ const InteractionContainer = ({
         </Select> */}
           {/* <input id='next' type='submit' value="Let's Play Giffles!" /> */}
         </form>
-        <div>
+        <div className={hiddenDuringPlay}>
           <Button
             variant='contained'
             id='new-round-button'
             onClick={startNewRound}
+
             // value="Let's Play Giffles!"
           >
+            {/* ***'NEXT ROUND' EXCEPT FOR FIRST ROUND */}
             Let's Play Giffles!
           </Button>
         </div>
