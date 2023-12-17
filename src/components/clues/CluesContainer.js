@@ -11,7 +11,7 @@ const CluesContainer = ({
   setGifCounter,
   gifSources,
   setPlayerFeedback,
-  setPlayerFeedbackHidden,
+  // setPlayerFeedbackHidden,
   setGifSources,
   title,
 }) => {
@@ -73,8 +73,8 @@ const CluesContainer = ({
       } catch (error) {
         respondToError(
           `getGifs Error ${error}`,
-          setPlayerFeedback,
-          setPlayerFeedbackHidden
+          setPlayerFeedback
+          // setPlayerFeedbackHidden
         );
       }
     };

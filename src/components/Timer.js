@@ -6,7 +6,7 @@ const Timer = ({
   countingDown,
   setCountingDown,
   setPlayerFeedback,
-  setPlayerFeedbackHidden,
+  // setPlayerFeedbackHidden,
   title,
 }) => {
   const decreaseSeconds = () => {
@@ -19,9 +19,9 @@ const Timer = ({
           setPlayerFeedback(
             `You're a little slow on the draw.<br>The correct answer was <em>${title.titleString}.</em>`
           );
-          setPlayerFeedbackHidden('');
+          // setPlayerFeedbackHidden('');
         }
-        console.log("time's up");
+        // console.log("time's up");
         return 15;
       }
     });

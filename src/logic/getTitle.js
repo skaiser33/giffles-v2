@@ -6,7 +6,11 @@ import weakWords from '../models/weakWords.js';
 import respondToError from './respondToError.js';
 
 //Generates random index, translates/tests title from master array
-const getTitle = (category, setPlayerFeedback, setPlayerFeedbackHidden) => {
+const getTitle = (
+  category,
+  setPlayerFeedback
+  // setPlayerFeedbackHidden
+) => {
   // clearAll(); //***TO BE UNCOMMENTED***
   let titles;
   switch (category) {
@@ -85,15 +89,15 @@ const getTitle = (category, setPlayerFeedback, setPlayerFeedbackHidden) => {
     if (gifWords === null)
       respondToError(
         'gifWords null',
-        setPlayerFeedback,
-        setPlayerFeedbackHidden
+        setPlayerFeedback
+        // setPlayerFeedbackHidden
       );
     for (let y = 1; y <= gifWords.length; y++) {
       if (gifWords[y] === null)
         respondToError(
           'gifWords[y] null',
-          setPlayerFeedback,
-          setPlayerFeedbackHidden
+          setPlayerFeedback
+          // setPlayerFeedbackHidden
         );
     }
     // console.log('getTitle() GIFWORDS ---->' + gifWords); // logs the full title

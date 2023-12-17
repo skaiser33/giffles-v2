@@ -14,8 +14,8 @@ const InteractionContainer = ({
   gifSources,
   playerFeedback,
   setPlayerFeedback,
-  playerFeedbackHidden,
-  setPlayerFeedbackHidden,
+  // playerFeedbackHidden,
+  // setPlayerFeedbackHidden,
   secondsLeft,
   setSecondsLeft,
   selectedCategory,
@@ -33,10 +33,13 @@ const InteractionContainer = ({
     if (gifSources.length) {
       clearAll(gifSources.length);
     }
-    setPlayerFeedbackHidden('hide');
+    // setPlayerFeedbackHidden('hide');
+    setPlayerFeedback('');
+
     setGifCounter(0);
     setTitle(
-      getTitle(selectedCategory, setPlayerFeedback, setPlayerFeedbackHidden)
+      getTitle(selectedCategory, setPlayerFeedback)
+      // getTitle(selectedCategory, setPlayerFeedback, setPlayerFeedbackHidden)
     );
     startTimer();
   };
@@ -54,7 +57,7 @@ const InteractionContainer = ({
     e.preventDefault();
     setCountingDown(false);
     setSecondsLeft(15);
-    setPlayerFeedbackHidden('');
+    // setPlayerFeedbackHidden('');
     // if player is CORRECT
     if (
       guess.toLowerCase() === title.titleString ||
@@ -94,7 +97,10 @@ const InteractionContainer = ({
             setGifCounter={setGifCounter}
           />
         </div>
-        <p className={playerFeedbackHidden} id='is-player-correct'>
+        {/* <p className={playerFeedbackHidden} id='is-player-correct'>
+          {playerFeedback}
+        </p> */}
+        <p className={playerFeedback ? '' : 'hide'} id='is-player-correct'>
           {playerFeedback}
         </p>
 
