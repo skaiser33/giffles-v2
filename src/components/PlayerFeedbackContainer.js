@@ -2,9 +2,18 @@ import React from 'react';
 
 const PlayerFeedbackContainer = ({ playerFeedback }) => {
   return (
-    <p className={playerFeedback ? '' : 'hide'} id='is-player-correct'>
+    <div className={playerFeedback ? '' : 'hide'} id='is-player-correct'>
       {playerFeedback}
-    </p>
+      {/* <p
+        className={playerFeedback ? 'line-break' : 'hide'}
+        id='is-player-correct'
+      >
+        {playerFeedback}
+      </p> */}
+      {/* <pre className={playerFeedback ? '' : 'hide'} id='is-player-correct'>
+      {playerFeedback}
+    </pre> */}
+    </div>
   );
 };
 

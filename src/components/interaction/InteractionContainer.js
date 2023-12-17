@@ -68,9 +68,8 @@ const InteractionContainer = ({
     ) {
       setScore((prev) => prev + 100 + secondsLeft);
       setPlayerFeedback(
-        `Correct! You earned ${
-          100 + secondsLeft
-        } points.<br><em>(redeemable for food rations in a future dystopian hellscape)</em>`
+        `Correct! You earned ${100 + secondsLeft} points.
+        \n<span>(redeemable for food rations in a future dystopian hellscape)</span>`
       );
 
       // pScore += 100 + seconds;
@@ -80,7 +79,7 @@ const InteractionContainer = ({
       // if player is INCORRECT
     } else {
       setPlayerFeedback(
-        `Yeah...no. <br>The correct answer was <em>${title.titleString}.</em>`
+        `Yeah...no.\nThe correct answer was <span>${title.titleString}.</span>`
       );
       // clearBetweenGifs();
       // showLoserGifs();
@@ -101,9 +100,7 @@ const InteractionContainer = ({
         {/* <p className={playerFeedbackHidden} id='is-player-correct'>
           {playerFeedback}
         </p> */}
-        {/* <p className={playerFeedback ? '' : 'hide'} id='is-player-correct'>
-          {playerFeedback}
-        </p> */}
+
         <PlayerFeedbackContainer playerFeedback={playerFeedback} />
 
         <form

@@ -94,6 +94,19 @@ img {
   padding: 0px 20px;
 }
 
+pre {
+  color: red;
+  font-family: var(--main-font);
+}
+
+span {
+  font-style: italic;
+}
+
+.line-break {
+  white-space: pre;
+}
+
 /* .game-container {
   display: flex;
   justify-content: center;
