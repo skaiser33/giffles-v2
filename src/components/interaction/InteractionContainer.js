@@ -3,6 +3,7 @@ import Button from '@mui/material/Button';
 import { ThemeProvider } from '@mui/material/styles';
 import buttonTheme from '../../themes/buttonTheme';
 import NewCluesButton from './NewCluesButton';
+import PlayerFeedbackContainer from '../PlayerFeedbackContainer';
 import getTitle from '../../logic/getTitle';
 import clearAll from '../../logic/clearAll';
 
@@ -100,9 +101,10 @@ const InteractionContainer = ({
         {/* <p className={playerFeedbackHidden} id='is-player-correct'>
           {playerFeedback}
         </p> */}
-        <p className={playerFeedback ? '' : 'hide'} id='is-player-correct'>
+        {/* <p className={playerFeedback ? '' : 'hide'} id='is-player-correct'>
           {playerFeedback}
-        </p>
+        </p> */}
+        <PlayerFeedbackContainer playerFeedback={playerFeedback} />
 
         <form
           id='answ'
