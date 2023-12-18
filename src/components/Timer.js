@@ -17,7 +17,7 @@ const Timer = ({
         setCountingDown(false);
         if (title.titleString.length) {
           setPlayerFeedback(
-            `You're a little slow on the draw.\nThe correct answer was <em>${title.titleString}.</em>`
+            `You're a little slow on the draw.\nThe correct answer was ${title.titleString.toUpperCase()}.</em>`
           );
           // setPlayerFeedbackHidden('');
         }

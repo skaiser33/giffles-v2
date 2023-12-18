@@ -103,8 +103,10 @@ span {
   font-style: italic;
 }
 
-.line-break {
+.feedback {
+  text-align: center;
   white-space: pre;
+  margin: 1vh 0 5vh 0;
 }
 
 /* .game-container {

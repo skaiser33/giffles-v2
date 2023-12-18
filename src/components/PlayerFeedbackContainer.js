@@ -2,7 +2,10 @@ import React from 'react';
 
 const PlayerFeedbackContainer = ({ playerFeedback }) => {
   return (
-    <div className={playerFeedback ? '' : 'hide'} id='is-player-correct'>
+    <div
+      className={playerFeedback ? 'feedback' : 'hide'}
+      id='is-player-correct'
+    >
       {playerFeedback}
       {/* <p
         className={playerFeedback ? 'line-break' : 'hide'}
