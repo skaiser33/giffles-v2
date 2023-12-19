@@ -1,4 +1,3 @@
-// import React from 'react';
 import books from '../models/books.js';
 import movies from '../models/movies.js';
 import songs from '../models/songs.js';
@@ -6,11 +5,7 @@ import weakWords from '../models/weakWords.js';
 import respondToError from './respondToError.js';
 
 //Generates random index, translates/tests title from master array
-const getTitle = (
-  category,
-  setPlayerFeedback
-  // setPlayerFeedbackHidden
-) => {
+const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
   // clearAll(); //***TO BE UNCOMMENTED***
   let titles;
   switch (category) {
@@ -26,8 +21,6 @@ const getTitle = (
     default:
       titles = movies;
   }
-  // console.log('category in getTitle', category);
-  // console.log('titles in getTitle', titles[0]);
   let nonGifText = {};
   let randomIndex, titleString, titleArray;
   let gifWords = []; //words to be converted to gifs will be pushed into this array
@@ -48,8 +41,6 @@ const getTitle = (
 
     titleString = titles[randomIndex].toLowerCase();
     titleArray = titleString.split(' ');
-    // console.log('getTitle() TITLESTR --->' + titleString);
-    // console.log('getTitle() TITLEARR --->' + titleArray);
 
     // REFACTOR WITH INCLUDES METHOD
     for (let i = 0; i < titleArray.length; i++) {
@@ -66,7 +57,6 @@ const getTitle = (
       if (i <= titleArray.length - 1) {
         // if first character is punctuation
         if (titleArray[i].search(/[.,:!?\(\)&']/) === 0) {
-          // document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(0) }`;
           updateNonGifText(titleArray[i].charAt(0));
           gifWords.push(titleArray[i].replace(/[^\w\s]|_/g, ''));
           // if last character is punctuation
@@ -75,7 +65,6 @@ const getTitle = (
           titleArray[i].length - 1
         ) {
           gifWords.push(titleArray[i].replace(/[^\w\s]|_/g, ''));
-          // document.getElementById(`pre${ gifWords.length + 1 }`).textContent += ` ${ titleArray[i].charAt(titleArray[i].length - 1) }`;
           updateNonGifText(titleArray[i].charAt(titleArray[i].length - 1));
           // if last two characters are 's
         } else if (titleArray[i].slice(-2) === "'s") {
@@ -89,24 +78,23 @@ const getTitle = (
     if (gifWords === null)
       respondToError(
         'gifWords null',
+        gifSources,
+        setGifSources,
         setPlayerFeedback
-        // setPlayerFeedbackHidden
       );
     for (let y = 1; y <= gifWords.length; y++) {
       if (gifWords[y] === null)
         respondToError(
           'gifWords[y] null',
+          gifSources,
+          setGifSources,
           setPlayerFeedback
           // setPlayerFeedbackHidden
         );
     }
-    // console.log('getTitle() GIFWORDS ---->' + gifWords); // logs the full title
     //If title length is too short / too long, pick another title
-    // while (gifWords.length < 2 || gifWords.length > 4) {
-    //   gifWords = getTitle();
   }
   console.log('to help guess, the titleString is', titleString);
-  // console.log('to help guess, gifWords.join is', gifWords.join(' '));
   return {
     titleString: titleString,
     gifWords: gifWords,

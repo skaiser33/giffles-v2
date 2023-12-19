@@ -1,14 +1,7 @@
 import clearAll from './clearAll';
-import fillGifContainer from './fillGifContainer';
 import stockGifs from '../models/stockGifs';
 
-const respondToError = (
-  err,
-  gifSources,
-  setGifSources,
-  setPlayerFeedback
-  // setPlayerFeedbackHidden
-) => {
+const respondToError = (err, gifSources, setGifSources, setPlayerFeedback) => {
   clearAll();
   if (gifSources.length) {
     clearAll(gifSources.length);
@@ -19,7 +12,6 @@ const respondToError = (
   setPlayerFeedback(
     "Sorry, they seem to be runnin' low on them particular gifs. Try spinning the wheel again."
   );
-  // setPlayerFeedbackHidden('');
   console.error(`GAME ERROR: ${err}`);
 };
 

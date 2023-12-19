@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
+import stockGifs from '../models/stockGifs';
+import clearAll from '../logic/clearAll';
 
 const Timer = ({
-  secondsLeft,
-  setSecondsLeft,
   countingDown,
   setCountingDown,
+  gifSources,
+  setGifSources,
   setPlayerFeedback,
-  // setPlayerFeedbackHidden,
+  secondsLeft,
+  setSecondsLeft,
   title,
 }) => {
   const decreaseSeconds = () => {
@@ -16,8 +19,13 @@ const Timer = ({
       } else {
         setCountingDown(false);
         if (title.titleString.length) {
+          if (gifSources.length) {
+            clearAll(gifSources.length);
+          }
+
+          setGifSources(stockGifs.loserGifs);
           setPlayerFeedback(
-            `You're a little slow on the draw.\nThe correct answer was ${title.titleString.toUpperCase()}.</em>`
+            `You're a little slow on the draw.\nThe correct answer was ${title.titleString.toUpperCase()}.`
           );
           // setPlayerFeedbackHidden('');
         }

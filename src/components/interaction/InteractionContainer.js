@@ -6,7 +6,6 @@ import NewCluesButton from './NewCluesButton';
 import PlayerFeedbackContainer from '../PlayerFeedbackContainer';
 import getTitle from '../../logic/getTitle';
 import clearAll from '../../logic/clearAll';
-import fillGifContainer from '../../logic/fillGifContainer';
 import stockGifs from '../../models/stockGifs';
 
 const InteractionContainer = ({
@@ -18,8 +17,6 @@ const InteractionContainer = ({
   setGifSources,
   playerFeedback,
   setPlayerFeedback,
-  // playerFeedbackHidden,
-  // setPlayerFeedbackHidden,
   secondsLeft,
   setSecondsLeft,
   selectedCategory,
@@ -37,13 +34,11 @@ const InteractionContainer = ({
     if (gifSources.length) {
       clearAll(gifSources.length);
     }
-    // setPlayerFeedbackHidden('hide');
     setPlayerFeedback('');
 
     setGifCounter(0);
     setTitle(
       getTitle(selectedCategory, gifSources, setGifSources, setPlayerFeedback)
-      // getTitle(selectedCategory, setPlayerFeedback, setPlayerFeedbackHidden)
     );
     startTimer();
   };
@@ -64,13 +59,10 @@ const InteractionContainer = ({
     if (gifSources.length) {
       clearAll(gifSources.length);
     }
-    // setPlayerFeedbackHidden('');
     // if player is CORRECT
     if (
       guess.toLowerCase() === title.titleString ||
       guess.toLowerCase() === title.gifWords.join(' ')
-      // guess.toLowerCase() === masterArray[randomIndex].toLowerCase() ||
-      // guess.toLowerCase() === gifWords.join(' ')
     ) {
       setGifSources(stockGifs.winnerGifs);
 
@@ -79,33 +71,20 @@ const InteractionContainer = ({
         `Correct! You earned ${100 + secondsLeft} points.
         \n(Redeemable for food rations in a future dystopian hellscape)`
       );
-      // console.log('winnerGifs[0].url', winnerGifs[0].url);
 
-      // pScore += 100 + seconds;
-      // playerScore.innerHTML = `Your Score: ${pScore}`;
-      // clearBetweenGifs();
-      // showWinnerGifs();
       // if player is INCORRECT
     } else {
       setGifSources(stockGifs.loserGifs);
       setPlayerFeedback(
         `Yeah...no. The correct answer was ${title.titleString.toUpperCase()}.`
       );
-      // clearBetweenGifs();
-      // showLoserGifs();
     }
-
-    // fillGifContainer(
-    //   { titleString: 'winner', nonGifText: {}, gifWords: [] },
-    //   gifSources
-    // );
 
     setGuess('');
   };
 
   return (
     <div className='interaction-container'>
-      {/* <button id="newClue" className="hide">New Clues Please!</button> */}
       <ThemeProvider theme={buttonTheme}>
         <div className={hiddenBetweenRounds}>
           <NewCluesButton
@@ -113,9 +92,6 @@ const InteractionContainer = ({
             setGifCounter={setGifCounter}
           />
         </div>
-        {/* <p className={playerFeedbackHidden} id='is-player-correct'>
-          {playerFeedback}
-        </p> */}
 
         <PlayerFeedbackContainer playerFeedback={playerFeedback} />
 
@@ -134,11 +110,7 @@ const InteractionContainer = ({
               setGuess(e.target.value);
             }}
           />
-          <button
-            id='answerButton'
-            type='submit'
-            // value=''
-          >
+          <button id='answerButton' type='submit'>
             Submit Answer
           </button>
         </form>
@@ -166,15 +138,12 @@ const InteractionContainer = ({
           <MenuItem value={20}>Twenty</MenuItem>
           <MenuItem value={30}>Thirty</MenuItem>
         </Select> */}
-          {/* <input id='next' type='submit' value="Let's Play Giffles!" /> */}
         </form>
         <div className={hiddenDuringPlay}>
           <Button
             variant='contained'
             id='new-round-button'
             onClick={startNewRound}
-
-            // value="Let's Play Giffles!"
           >
             {/* ***'NEXT ROUND' EXCEPT FOR FIRST ROUND */}
             Let's Play Giffles!
@@ -183,7 +152,6 @@ const InteractionContainer = ({
 
         <div id='score-and-reset'>
           <p className='playerScore'>Your Score: {score}</p>
-          {/* <button id="newPlayer" className="hide">New Player / Reset Game</button> */}
           <Button
             variant='contained'
             color='secondary'

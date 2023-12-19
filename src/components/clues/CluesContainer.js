@@ -11,34 +11,10 @@ const CluesContainer = ({
   setGifCounter,
   gifSources,
   setPlayerFeedback,
-  // setPlayerFeedbackHidden,
   setGifSources,
   title,
 }) => {
-  // console.log('gifCounter in CluesContainer', gifCounter);
-  // const [title, setTitle] = useState({
-  //   titleString: [],
-  //   gifWords: [],
-  //   nonGifText: {},
-  // });
-
   const [gifData, setGifData] = useState([]);
-  // const [gifSources, setGifSources] = useState([]);
-
-  // useEffect(() => {
-  //   // *** MUST AVOID CALLING USEEFFECT ON INITIAL RENDER -- RIGHT?
-  //   // https://stackoverflow.com/questions/53179075/with-useeffect-how-can-i-skip-applying-an-effect-upon-the-initial-render
-  //   // https://typeofnan.dev/how-to-prevent-useeffect-from-running-on-mount-in-react/
-  //   console.log('useEffect Called, gifCounter is', gifCounter);
-  // }, [gifCounter]);
-
-  // const startNewRound = () => {
-  //   if (gifSources.length) {
-  //     clearAll(gifSources.length);
-  //   }
-  //   setGifCounter(0);
-  //   setTitle(getTitle(selectedCategory));
-  // };
 
   // WHEN TITLE CHANGES, FETCH NEW GIFS AND POPULATE GIFCONTAINERS WITH THE FIRST SET OF GIFS
   useEffect(() => {
@@ -77,7 +53,6 @@ const CluesContainer = ({
           gifSources,
           setGifSources,
           setPlayerFeedback
-          // setPlayerFeedbackHidden
         );
       }
     };
@@ -100,7 +75,6 @@ const CluesContainer = ({
   return (
     <>
       <div className='clues-container'>
-        {/* <p id="pre1"></p>*/}
         {title.nonGifText && title.nonGifText[1] ? (
           <p id='pre1'>{title.nonGifText[1]}</p>
         ) : (

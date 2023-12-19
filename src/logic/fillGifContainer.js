@@ -3,7 +3,6 @@ import GifContainer from '../components/clues/GifContainer';
 
 const fillGifContainer = (title, gifSources) => {
   return gifSources.map((gifSource, idx) => {
-    // console.log('gifSource in fill', gifSource);
     return (
       <>
         <GifContainer
@@ -12,7 +11,6 @@ const fillGifContainer = (title, gifSources) => {
           title={(idx + 1).toString()}
           gif={gifSource}
         />
-        {/* <p id={`pre${(idx + 2).toString()}`}></p> */}
         {title.nonGifText[idx + 2] ? (
           <p
             key={`pre${(idx + 2).toString()}`}
