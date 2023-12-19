@@ -6,6 +6,8 @@ import NewCluesButton from './NewCluesButton';
 import PlayerFeedbackContainer from '../PlayerFeedbackContainer';
 import getTitle from '../../logic/getTitle';
 import clearAll from '../../logic/clearAll';
+import fillGifContainer from '../../logic/fillGifContainer';
+import stockGifs from '../../models/stockGifs';
 
 const InteractionContainer = ({
   countingDown,
@@ -13,6 +15,7 @@ const InteractionContainer = ({
   gifCounter,
   setGifCounter,
   gifSources,
+  setGifSources,
   playerFeedback,
   setPlayerFeedback,
   // playerFeedbackHidden,
@@ -39,7 +42,7 @@ const InteractionContainer = ({
 
     setGifCounter(0);
     setTitle(
-      getTitle(selectedCategory, setPlayerFeedback)
+      getTitle(selectedCategory, gifSources, setGifSources, setPlayerFeedback)
       // getTitle(selectedCategory, setPlayerFeedback, setPlayerFeedbackHidden)
     );
     startTimer();
@@ -58,6 +61,9 @@ const InteractionContainer = ({
     e.preventDefault();
     setCountingDown(false);
     setSecondsLeft(15);
+    if (gifSources.length) {
+      clearAll(gifSources.length);
+    }
     // setPlayerFeedbackHidden('');
     // if player is CORRECT
     if (
@@ -66,11 +72,14 @@ const InteractionContainer = ({
       // guess.toLowerCase() === masterArray[randomIndex].toLowerCase() ||
       // guess.toLowerCase() === gifWords.join(' ')
     ) {
+      setGifSources(stockGifs.winnerGifs);
+
       setScore((prev) => prev + 100 + secondsLeft);
       setPlayerFeedback(
         `Correct! You earned ${100 + secondsLeft} points.
-        \n(redeemable for food rations in a future dystopian hellscape)</span>`
+        \n(Redeemable for food rations in a future dystopian hellscape)`
       );
+      // console.log('winnerGifs[0].url', winnerGifs[0].url);
 
       // pScore += 100 + seconds;
       // playerScore.innerHTML = `Your Score: ${pScore}`;
@@ -78,12 +87,19 @@ const InteractionContainer = ({
       // showWinnerGifs();
       // if player is INCORRECT
     } else {
+      setGifSources(stockGifs.loserGifs);
       setPlayerFeedback(
         `Yeah...no. The correct answer was ${title.titleString.toUpperCase()}.`
       );
       // clearBetweenGifs();
       // showLoserGifs();
     }
+
+    // fillGifContainer(
+    //   { titleString: 'winner', nonGifText: {}, gifWords: [] },
+    //   gifSources
+    // );
+
     setGuess('');
   };
 

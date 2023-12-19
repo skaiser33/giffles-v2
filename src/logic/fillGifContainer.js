@@ -3,7 +3,7 @@ import GifContainer from '../components/clues/GifContainer';
 
 const fillGifContainer = (title, gifSources) => {
   return gifSources.map((gifSource, idx) => {
-    console.log('gifSource in fill', gifSource);
+    // console.log('gifSource in fill', gifSource);
     return (
       <>
         <GifContainer

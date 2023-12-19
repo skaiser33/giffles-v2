@@ -70,9 +70,12 @@ const CluesContainer = ({
           })
         );
         setGifSources(gifSourcesHelper);
+        console.log('gifSourcesHelper -->', gifSourcesHelper);
       } catch (error) {
         respondToError(
           `getGifs Error ${error}`,
+          gifSources,
+          setGifSources,
           setPlayerFeedback
           // setPlayerFeedbackHidden
         );

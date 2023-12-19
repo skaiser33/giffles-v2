@@ -20,6 +20,7 @@ const weakWords = [
   'is',
   'it',
   'its',
+  'like',
   'of',
   'that',
   'the',
