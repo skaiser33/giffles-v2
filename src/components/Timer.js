@@ -7,6 +7,8 @@ const Timer = ({
   setCountingDown,
   gifSources,
   setGifSources,
+  isNewGame,
+  setIsNewGame,
   setPlayerFeedback,
   secondsLeft,
   setSecondsLeft,
@@ -18,6 +20,9 @@ const Timer = ({
         return --prev;
       } else {
         setCountingDown(false);
+        if (isNewGame) {
+          setIsNewGame(false);
+        }
         if (title.titleString.length) {
           if (gifSources.length) {
             clearAll(gifSources.length);

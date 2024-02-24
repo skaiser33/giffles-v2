@@ -8,6 +8,7 @@ const GameContainer = () => {
   const [countingDown, setCountingDown] = useState(false);
   const [gifCounter, setGifCounter] = useState(0);
   const [gifSources, setGifSources] = useState([]);
+  const [isNewGame, setIsNewGame] = useState(true);
   const [playerFeedback, setPlayerFeedback] = useState('');
   const [score, setScore] = useState(0);
   const [secondsLeft, setSecondsLeft] = useState(15);
@@ -25,6 +26,8 @@ const GameContainer = () => {
         setCountingDown={setCountingDown}
         gifSources={gifSources}
         setGifSources={setGifSources}
+        isNewGame={isNewGame}
+        setIsNewGame={setIsNewGame}
         playerFeedback={playerFeedback}
         setPlayerFeedback={setPlayerFeedback}
         secondsLeft={secondsLeft}
@@ -48,6 +51,8 @@ const GameContainer = () => {
         setGifCounter={setGifCounter}
         gifSources={gifSources}
         setGifSources={setGifSources}
+        isNewGame={isNewGame}
+        setIsNewGame={setIsNewGame}
         playerFeedback={playerFeedback}
         setPlayerFeedback={setPlayerFeedback}
         score={score}

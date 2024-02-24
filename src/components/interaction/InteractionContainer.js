@@ -15,6 +15,8 @@ const InteractionContainer = ({
   setGifCounter,
   gifSources,
   setGifSources,
+  isNewGame,
+  setIsNewGame,
   playerFeedback,
   setPlayerFeedback,
   secondsLeft,
@@ -45,6 +47,7 @@ const InteractionContainer = ({
 
   const startNewPlayer = () => {
     setScore(0);
+    setIsNewGame(true);
     startNewRound();
   };
 
@@ -54,6 +57,9 @@ const InteractionContainer = ({
 
   const isPlayerCorrect = (e) => {
     e.preventDefault();
+    if (isNewGame) {
+      setIsNewGame(false);
+    }
     setCountingDown(false);
     setSecondsLeft(15);
     if (gifSources.length) {
@@ -146,7 +152,7 @@ const InteractionContainer = ({
             onClick={startNewRound}
           >
             {/* ***'NEXT ROUND' EXCEPT FOR FIRST ROUND */}
-            Let's Play Giffles!
+            {isNewGame ? "Let's Play Giffles!" : 'Next Round!'}
           </Button>
         </div>
 
