@@ -46,9 +46,13 @@ const InteractionContainer = ({
   };
 
   const startNewPlayer = () => {
+    setPlayerFeedback('');
     setScore(0);
     setIsNewGame(true);
-    startNewRound();
+    setGifSources([]);
+    setCountingDown(false);
+    setSecondsLeft(15);
+    // DO I NEED TO setGifCounter(0) ???
   };
 
   let hiddenBetweenRounds = countingDown ? 'show' : 'hide';
