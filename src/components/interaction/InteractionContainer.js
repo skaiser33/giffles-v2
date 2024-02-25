@@ -11,6 +11,8 @@ import stockGifs from '../../models/stockGifs';
 const InteractionContainer = ({
   countingDown,
   setCountingDown,
+  guess,
+  setGuess,
   gifCounter,
   setGifCounter,
   gifSources,
@@ -28,8 +30,6 @@ const InteractionContainer = ({
   score,
   setScore,
 }) => {
-  const [guess, setGuess] = useState('');
-
   const startTimer = () => setCountingDown((prev) => !prev);
 
   const startNewRound = () => {
@@ -46,12 +46,16 @@ const InteractionContainer = ({
   };
 
   const startNewPlayer = () => {
+    if (gifSources.length) {
+      clearAll(gifSources.length);
+    }
     setPlayerFeedback('');
     setScore(0);
     setIsNewGame(true);
     setGifSources([]);
     setCountingDown(false);
     setSecondsLeft(15);
+    // setGuess('');
     // DO I NEED TO setGifCounter(0) ???
   };
 

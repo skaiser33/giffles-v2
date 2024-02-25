@@ -10,6 +10,8 @@ const GameContainer = () => {
   const [gifCounter, setGifCounter] = useState(0);
   // array of fixed height gif images retrieved from raw data in gifData
   const [gifSources, setGifSources] = useState([]);
+  const [guess, setGuess] = useState('');
+
   const [isNewGame, setIsNewGame] = useState(true);
   const [playerFeedback, setPlayerFeedback] = useState('');
   const [score, setScore] = useState(0);
@@ -28,6 +30,8 @@ const GameContainer = () => {
         setCountingDown={setCountingDown}
         gifSources={gifSources}
         setGifSources={setGifSources}
+        guess={guess}
+        setGuess={setGuess}
         isNewGame={isNewGame}
         setIsNewGame={setIsNewGame}
         playerFeedback={playerFeedback}
@@ -49,10 +53,12 @@ const GameContainer = () => {
       <InteractionContainer
         countingDown={countingDown}
         setCountingDown={setCountingDown}
-        gifCounter={gifCounter}
-        setGifCounter={setGifCounter}
+        guess={guess}
+        setGuess={setGuess}
         gifSources={gifSources}
         setGifSources={setGifSources}
+        gifCounter={gifCounter}
+        setGifCounter={setGifCounter}
         isNewGame={isNewGame}
         setIsNewGame={setIsNewGame}
         playerFeedback={playerFeedback}

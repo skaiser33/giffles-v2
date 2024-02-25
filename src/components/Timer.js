@@ -7,6 +7,8 @@ const Timer = ({
   setCountingDown,
   gifSources,
   setGifSources,
+  guess,
+  setGuess,
   isNewGame,
   setIsNewGame,
   setPlayerFeedback,
@@ -34,6 +36,8 @@ const Timer = ({
           );
           // setPlayerFeedbackHidden('');
         }
+        setGuess('');
+
         // console.log("time's up");
         return 15;
       }
