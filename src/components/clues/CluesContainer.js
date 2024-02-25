@@ -14,6 +14,7 @@ const CluesContainer = ({
   setGifSources,
   title,
 }) => {
+  // gifData holds fetched data before mapping to gifSources
   const [gifData, setGifData] = useState([]);
 
   // WHEN TITLE CHANGES, FETCH NEW GIFS AND POPULATE GIFCONTAINERS WITH THE FIRST SET OF GIFS

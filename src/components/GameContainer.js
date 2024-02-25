@@ -6,7 +6,9 @@ import Instructions from './Instructions';
 
 const GameContainer = () => {
   const [countingDown, setCountingDown] = useState(false);
+  // handles which of 5 available gif clue sets is currently being displayed for the current round
   const [gifCounter, setGifCounter] = useState(0);
+  // array of fixed height gif images retrieved from raw data in gifData
   const [gifSources, setGifSources] = useState([]);
   const [isNewGame, setIsNewGame] = useState(true);
   const [playerFeedback, setPlayerFeedback] = useState('');

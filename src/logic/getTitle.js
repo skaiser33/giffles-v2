@@ -44,15 +44,27 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
 
     // REFACTOR WITH INCLUDES METHOD
     for (let i = 0; i < titleArray.length; i++) {
+      if (titleArray[i] === undefined)
+        respondToError(
+          'titleArray[i] === undefined',
+          gifSources,
+          setGifSources,
+          setPlayerFeedback
+        );
       //check for weak words and put between gifs
-      for (let j = 0; j < weakWords.length; j++) {
-        // ***UNCOMMENT*** if (titleArray[i] === undefined) respondToError();
-        if (titleArray[i].replace(/[^\w]|_/g, '') === weakWords[j]) {
-          //feed into correct placeholder based on gifWords.length
-          updateNonGifText(titleArray[i]);
-          i++;
-        }
+      if (weakWords.includes(titleArray[i].replace(/[^\w]|_/g, ''))) {
+        //feed into correct placeholder based on gifWords.length
+        updateNonGifText(titleArray[i]);
+        i++;
       }
+      // TO DELETE -- USING LOOP INSTEAD OF INCLUDES
+      // for (let j = 0; j < weakWords.length; j++) {
+      //   if (titleArray[i].replace(/[^\w]|_/g, '') === weakWords[j]) {
+      //     //feed into correct placeholder based on gifWords.length
+      //     updateNonGifText(titleArray[i]);
+      //     i++;
+      //   }
+      // }
       //check for punctuation at start and end of words and put betwen gifs, then put
       if (i <= titleArray.length - 1) {
         // if first character is punctuation
