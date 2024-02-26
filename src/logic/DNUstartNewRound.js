@@ -1,9 +1,7 @@
 import React from 'react';
 
 const startNewRound = () => {
-  if (gifSources.length) {
-    clearAll(gifSources.length);
-  }
+  clearAll();
   setGifCounter(0);
   setTitle(getTitle(selectedCategory));
 };

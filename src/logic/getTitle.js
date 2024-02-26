@@ -57,14 +57,7 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
         updateNonGifText(titleArray[i]);
         i++;
       }
-      // TO DELETE -- USING LOOP INSTEAD OF INCLUDES
-      // for (let j = 0; j < weakWords.length; j++) {
-      //   if (titleArray[i].replace(/[^\w]|_/g, '') === weakWords[j]) {
-      //     //feed into correct placeholder based on gifWords.length
-      //     updateNonGifText(titleArray[i]);
-      //     i++;
-      //   }
-      // }
+
       //check for punctuation at start and end of words and put betwen gifs, then put
       if (i <= titleArray.length - 1) {
         // if first character is punctuation

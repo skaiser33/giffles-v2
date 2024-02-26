@@ -3,10 +3,6 @@ import stockGifs from '../models/stockGifs';
 
 const respondToError = (err, gifSources, setGifSources, setPlayerFeedback) => {
   clearAll();
-  // if (gifSources.length) {
-  //   clearAll(gifSources.length);
-  // }
-  clearAll();
   setGifSources(stockGifs.errorGifs);
 
   setPlayerFeedback(

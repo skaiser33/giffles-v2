@@ -27,10 +27,6 @@ const Timer = ({
         }
         if (title.titleString.length) {
           clearAll();
-          // if (gifSources.length) {
-          //   clearAll(gifSources.length);
-          // }
-
           setGifSources(stockGifs.loserGifs);
           setPlayerFeedback(
             `You're a little slow on the draw.\nThe correct answer was ${title.titleString.toUpperCase()}.`
@@ -38,8 +34,6 @@ const Timer = ({
           // setPlayerFeedbackHidden('');
         }
         setGuess('');
-
-        // console.log("time's up");
         return 15;
       }
     });
