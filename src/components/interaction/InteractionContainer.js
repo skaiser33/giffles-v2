@@ -37,7 +37,6 @@ const InteractionContainer = ({
       clearAll(gifSources.length);
     }
     setPlayerFeedback('');
-
     setGifCounter(0);
     setTitle(
       getTitle(selectedCategory, gifSources, setGifSources, setPlayerFeedback)
@@ -50,13 +49,13 @@ const InteractionContainer = ({
       clearAll(gifSources.length);
     }
     setPlayerFeedback('');
+    setGifCounter(0);
     setScore(0);
     setIsNewGame(true);
     setGifSources([]);
     setCountingDown(false);
     setSecondsLeft(15);
     // setGuess('');
-    // DO I NEED TO setGifCounter(0) ???
   };
 
   let hiddenBetweenRounds = countingDown ? 'show' : 'hide';

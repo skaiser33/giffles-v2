@@ -15,6 +15,7 @@ const fillGifContainer = (title, gifSources) => {
           <p
             key={`pre${(idx + 2).toString()}`}
             id={`pre${(idx + 2).toString()}`}
+            className='non-gif-text'
           >
             {title.nonGifText[idx + 2]}
           </p>

@@ -77,7 +77,9 @@ const CluesContainer = ({
     <>
       <div className='clues-container'>
         {title.nonGifText && title.nonGifText[1] ? (
-          <p id='pre1'>{title.nonGifText[1]}</p>
+          <p id='pre1' className='non-gif-text'>
+            {title.nonGifText[1]}{' '}
+          </p>
         ) : (
           <></>
         )}
