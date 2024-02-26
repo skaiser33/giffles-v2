@@ -26,9 +26,10 @@ const Timer = ({
           setIsNewGame(false);
         }
         if (title.titleString.length) {
-          if (gifSources.length) {
-            clearAll(gifSources.length);
-          }
+          clearAll();
+          // if (gifSources.length) {
+          //   clearAll(gifSources.length);
+          // }
 
           setGifSources(stockGifs.loserGifs);
           setPlayerFeedback(

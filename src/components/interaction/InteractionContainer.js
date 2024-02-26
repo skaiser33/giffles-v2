@@ -33,9 +33,10 @@ const InteractionContainer = ({
   const startTimer = () => setCountingDown((prev) => !prev);
 
   const startNewRound = () => {
-    if (gifSources.length) {
-      clearAll(gifSources.length);
-    }
+    // if (gifSources.length) {
+    //   clearAll(gifSources.length);
+    // }
+    clearAll();
     setPlayerFeedback('');
     setGifCounter(0);
     setTitle(
@@ -45,9 +46,10 @@ const InteractionContainer = ({
   };
 
   const startNewPlayer = () => {
-    if (gifSources.length) {
-      clearAll(gifSources.length);
-    }
+    // if (gifSources.length) {
+    //   clearAll(gifSources.length);
+    // }
+    clearAll();
     setPlayerFeedback('');
     setGifCounter(0);
     setScore(0);
@@ -69,9 +71,10 @@ const InteractionContainer = ({
     }
     setCountingDown(false);
     setSecondsLeft(15);
-    if (gifSources.length) {
-      clearAll(gifSources.length);
-    }
+    // if (gifSources.length) {
+    //   clearAll(gifSources.length);
+    // }
+    clearAll();
     // if player is CORRECT
     if (
       guess.toLowerCase() === title.titleString ||
