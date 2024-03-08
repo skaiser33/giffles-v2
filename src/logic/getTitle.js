@@ -29,7 +29,6 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
 
   const updateNonGifText = (text) => {
     const position = gifWords.length + 1;
-    console.log('updateNonGifText: text & position', text, position);
     nonGifText[position]
       ? (nonGifText[position] += ` ${text}`)
       : (nonGifText[position] = text);

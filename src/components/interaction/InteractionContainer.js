@@ -6,6 +6,7 @@ import PlayerFeedbackContainer from '../PlayerFeedbackContainer';
 import getTitle from '../../logic/getTitle';
 import clearAll from '../../logic/clearAll';
 import stockGifs from '../../models/stockGifs';
+import { timerValue } from '../../logic/constants';
 
 const InteractionContainer = ({
   countingDown,
@@ -49,7 +50,7 @@ const InteractionContainer = ({
     setIsNewGame(true);
     setGifSources([]);
     setCountingDown(false);
-    setSecondsLeft(15);
+    setSecondsLeft(timerValue);
     // setGuess('');
   };
 
@@ -63,7 +64,7 @@ const InteractionContainer = ({
       setIsNewGame(false);
     }
     setCountingDown(false);
-    setSecondsLeft(15);
+    setSecondsLeft(timerValue);
     // if (gifSources.length) {
     //   ifSources.length);
     // }

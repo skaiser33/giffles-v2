@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import stockGifs from '../models/stockGifs';
 import clearAll from '../logic/clearAll';
+import { timerValue } from '../logic/constants';
 
 const Timer = ({
   countingDown,
@@ -34,7 +35,7 @@ const Timer = ({
           // setPlayerFeedbackHidden('');
         }
         setGuess('');
-        return 15;
+        return timerValue;
       }
     });
   };

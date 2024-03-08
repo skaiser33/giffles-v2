@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { timerValue } from '../logic/constants';
 import Timer from './Timer';
 import CluesContainer from './clues/CluesContainer';
 import InteractionContainer from './interaction/InteractionContainer';
@@ -15,7 +16,7 @@ const GameContainer = () => {
   const [isNewGame, setIsNewGame] = useState(true);
   const [playerFeedback, setPlayerFeedback] = useState('');
   const [score, setScore] = useState(0);
-  const [secondsLeft, setSecondsLeft] = useState(15);
+  const [secondsLeft, setSecondsLeft] = useState(timerValue);
   const [selectedCategory, setSelectedCategory] = useState('movies');
   const [title, setTitle] = useState({
     titleString: [],
