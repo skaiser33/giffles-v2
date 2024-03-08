@@ -2,11 +2,13 @@ import books from '../models/books.js';
 import movies from '../models/movies.js';
 import songs from '../models/songs.js';
 import weakWords from '../models/weakWords.js';
+
+import clearAll from './clearAll.js';
 import respondToError from './respondToError.js';
 
 //Generates random index, translates/tests title from master array
 const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
-  // clearAll(); //***TO BE UNCOMMENTED***
+  clearAll(); //***TO BE UNCOMMENTED***
   let titles;
   switch (category) {
     case 'movies':
@@ -100,6 +102,8 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
     //If title length is too short / too long, pick another title
   }
   console.log('to help guess, the titleString is', titleString);
+  console.log('gifWords --->', gifWords);
+  console.log('nonGifText --->', nonGifText);
   return {
     titleString: titleString,
     gifWords: gifWords,
