@@ -8,7 +8,7 @@ import respondToError from './respondToError.js';
 
 //Generates random index, translates/tests title from master array
 const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
-  clearAll(); //***TO BE UNCOMMENTED***
+  // clearAll(); //***TO BE UNCOMMENTED***
   let titles;
   switch (category) {
     case 'movies':
@@ -23,12 +23,13 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
     default:
       titles = movies;
   }
-  let nonGifText = {};
+  let nonGifText = {}; //words and punctuation to be converted to text will be pushed into this object
   let randomIndex, titleString, titleArray;
   let gifWords = []; //words to be converted to gifs will be pushed into this array
 
   const updateNonGifText = (text) => {
     const position = gifWords.length + 1;
+    console.log('updateNonGifText: text & position', text, position);
     nonGifText[position]
       ? (nonGifText[position] += ` ${text}`)
       : (nonGifText[position] = text);
@@ -43,6 +44,7 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
 
     titleString = titles[randomIndex].toLowerCase();
     titleArray = titleString.split(' ');
+    console.log('titleArray', titleArray);
 
     // REFACTOR WITH INCLUDES METHOD
     for (let i = 0; i < titleArray.length; i++) {
@@ -57,7 +59,7 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
       if (weakWords.includes(titleArray[i].replace(/[^\w]|_/g, ''))) {
         //feed into correct placeholder based on gifWords.length
         updateNonGifText(titleArray[i]);
-        i++;
+        continue;
       }
 
       //check for punctuation at start and end of words and put betwen gifs, then put
