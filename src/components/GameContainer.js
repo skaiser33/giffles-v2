@@ -15,6 +15,12 @@ const GameContainer = () => {
 
   const [isNewGame, setIsNewGame] = useState(true);
   const [playerFeedback, setPlayerFeedback] = useState('');
+  const [prevRandomIndices, setPrevRandomIndices] = useState({
+    movies: [],
+    songs: [],
+    books: [],
+  });
+
   const [score, setScore] = useState(0);
   const [secondsLeft, setSecondsLeft] = useState(timerValue);
   const [selectedCategory, setSelectedCategory] = useState('movies');
@@ -64,6 +70,8 @@ const GameContainer = () => {
         setIsNewGame={setIsNewGame}
         playerFeedback={playerFeedback}
         setPlayerFeedback={setPlayerFeedback}
+        prevRandomIndices={prevRandomIndices}
+        setPrevRandomIndices={setPrevRandomIndices}
         score={score}
         setScore={setScore}
         secondsLeft={secondsLeft}

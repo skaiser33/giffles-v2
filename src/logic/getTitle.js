@@ -7,7 +7,14 @@ import clearAll from './clearAll.js';
 import respondToError from './respondToError.js';
 
 //Generates random index, translates/tests title from master array
-const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
+const getTitle = (
+  category,
+  gifSources,
+  setGifSources,
+  setPlayerFeedback,
+  prevRandomIndices,
+  setPrevRandomIndices
+) => {
   // clearAll(); //***TO BE UNCOMMENTED***
   let titles;
   switch (category) {
@@ -24,8 +31,8 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
       titles = movies;
   }
   let nonGifText = {}; //words and punctuation to be converted to text will be pushed into this object
-  let randomIndex, titleString, titleArray;
   let gifWords = []; //words to be converted to gifs will be pushed into this array
+  let randomIndex, titleString, titleArray;
 
   const updateNonGifText = (text) => {
     const position = gifWords.length + 1;
@@ -37,8 +44,29 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
   while (gifWords.length < 2 || gifWords.length > 4) {
     gifWords = [];
     nonGifText = {};
-    randomIndex = Math.floor(Math.random() * titles.length);
-
+    // if randomIndex has already been chosen for this category, choose another
+    while (
+      !randomIndex ||
+      prevRandomIndices[`${category}`].includes(randomIndex)
+    ) {
+      // to prevent infinite loop if all indices have been chosen
+      if (prevRandomIndices[`${category}`].length === titles.length - 1) {
+        respondToError(
+          'No more titles in this category',
+          gifSources,
+          setGifSources,
+          setPlayerFeedback
+        );
+        setPrevRandomIndices({
+          ...prevRandomIndices,
+          [category]: [],
+        });
+        break;
+      }
+      randomIndex = Math.floor(Math.random() * titles.length);
+    }
+    prevRandomIndices[`${category}`].push(randomIndex);
+    console.log('prevRandomIndices', prevRandomIndices);
     //Parse through each word of title for words that will be translated into gifs, "weak words" that will not, and punctuation
 
     titleString = titles[randomIndex].toLowerCase();
@@ -103,8 +131,8 @@ const getTitle = (category, gifSources, setGifSources, setPlayerFeedback) => {
     //If title length is too short / too long, pick another title
   }
   console.log('to help guess, the titleString is', titleString);
-  console.log('gifWords --->', gifWords);
-  console.log('nonGifText --->', nonGifText);
+  // console.log('gifWords --->', gifWords);
+  // console.log('nonGifText --->', nonGifText);
   return {
     titleString: titleString,
     gifWords: gifWords,

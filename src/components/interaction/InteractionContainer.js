@@ -21,6 +21,8 @@ const InteractionContainer = ({
   setIsNewGame,
   playerFeedback,
   setPlayerFeedback,
+  prevRandomIndices,
+  setPrevRandomIndices,
   secondsLeft,
   setSecondsLeft,
   selectedCategory,
@@ -37,19 +39,31 @@ const InteractionContainer = ({
     setPlayerFeedback('');
     setGifCounter(0);
     setTitle(
-      getTitle(selectedCategory, gifSources, setGifSources, setPlayerFeedback)
+      getTitle(
+        selectedCategory,
+        gifSources,
+        setGifSources,
+        setPlayerFeedback,
+        prevRandomIndices,
+        setPrevRandomIndices
+      )
     );
     startTimer();
   };
 
   const startNewPlayer = () => {
     clearAll();
-    setPlayerFeedback('');
-    setGifCounter(0);
-    setScore(0);
-    setIsNewGame(true);
-    setGifSources([]);
     setCountingDown(false);
+    setGifCounter(0);
+    setGifSources([]);
+    setIsNewGame(true);
+    setPlayerFeedback('');
+    setPrevRandomIndices({
+      movies: [],
+      songs: [],
+      books: [],
+    });
+    setScore(0);
     setSecondsLeft(timerValue);
     // setGuess('');
   };
