@@ -7,10 +7,10 @@
   /* --white-overlay: rgb(235, 231, 231, .8); */
   --title-font: 'Potta One', cursive;
   --main-font: 'Big Shoulders Display', cursive;
-  --alt-font: 'Rajdhani', sans-serif; 
+  --alt-font: 'Rajdhani', sans-serif;
 }
 
-html{
+html {
   height: 100vh;
   /* width: 100vh; */
 }
@@ -18,18 +18,30 @@ body {
   margin: 0;
   /* height: 100%; */
   max-width: 100%;
-  background:rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
   background-attachment: fixed;
-  background: linear-gradient(to top, rgba(47, 1, 174, 0.4), rgb(255, 141, 1, 0.8)); 
-  background: -webkit-linear-gradient(to top, rgba(238, 0, 0, 0.4), rgb(255, 159, 41));
-  background: -moz-linear-gradient(to top, rgba(238, 0, 0, 0.4), rgb(255, 159, 41));
-  
+  background: linear-gradient(
+    to top,
+    rgba(47, 1, 174, 0.4),
+    rgb(255, 141, 1, 0.8)
+  );
+  background: -webkit-linear-gradient(
+    to top,
+    rgba(238, 0, 0, 0.4),
+    rgb(255, 159, 41)
+  );
+  background: -moz-linear-gradient(
+    to top,
+    rgba(238, 0, 0, 0.4),
+    rgb(255, 159, 41)
+  );
+
   font-family: var(--main-font);
   font-size: 1.875rem;
   /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
-  -webkit-font-smoothing: antialiased; 
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
@@ -39,19 +51,18 @@ body {
 } */
 
 header {
-  margin: 5px auto ;
+  margin: 5px auto;
   max-width: 40%;
   /* max-height: 20%; */
   text-align: center;
-  border: 3px ridge  var(--green);
+  border: 3px ridge var(--green);
   border-radius: 90%;
 }
 
 header > p {
   color: var(--red);
-  margin-top: .3em;
+  margin-top: 0.3em;
   font-size: 1.2rem;
-
 }
 
 header > p > a {
@@ -63,24 +74,39 @@ h1 {
   font-family: var(--title-font);
   font-size: 4rem;
   color: var(--light);
-	-webkit-text-stroke-width: .5px;
-	-webkit-text-stroke-color: black;
-	-moz-text-stroke-width: .5px;
-	-moz-text-stroke-color: black;
-  margin: .5em 0em 0em 0em;
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: black;
+  -moz-text-stroke-width: 0.5px;
+  -moz-text-stroke-color: black;
+  margin: 0.5em 0em 0em 0em;
 }
 
 h3 {
   margin: 0em;
   color: var(--red-with-stroke);
-  -webkit-text-stroke-width: .001px;
+  -webkit-text-stroke-width: 0.001px;
   -webkit-text-stroke-color: black;
-  -moz-text-stroke-width: .001px;
+  -moz-text-stroke-width: 0.001px;
   -moz-text-stroke-color: black;
 }
 
 img {
   padding: 0px 20px;
+}
+
+pre {
+  color: red;
+  font-family: var(--main-font);
+}
+
+span {
+  font-style: italic;
+}
+
+.feedback {
+  text-align: center;
+  white-space: pre;
+  margin: 1vh 0 5vh 0;
 }
 
 /* .game-container {
@@ -96,7 +122,7 @@ img {
   align-items: center;
 }
 
-.giffles-container {
+.clues-container {
   display: flex;
   /* flex-flow: row; */
   justify-content: space-evenly;
@@ -121,7 +147,10 @@ img {
   border: 3px solid black;
   border-radius: 1%;
    */
+  align-items: center;
+  justify-content: center;
   border: 10px solid black;
+  /* height: 200px !important; */
   border-radius: 10%;
   background-color: black;
   margin-left: 20px;
@@ -147,7 +176,6 @@ img {
   margin-left: 20px;
   margin-right: 20px;
 }
-
 
 #instruct-button {
   position: fixed;
@@ -200,9 +228,7 @@ small {
   color: white;
 }
 
-.hide {
-  display: none;
-}
+
 
 .show-description p {
   height: 270px;
@@ -210,13 +236,18 @@ small {
 
 .show-description small {
   opacity: 1;
-} */
+}
+*/
 
-/* #timer {
+.hide {
+  display: none;
+}
+
+#timer {
   position: fixed;
   top: 5px;
   right: 10px;
-} */
+}
 
 /* #newClue {
   font-size: 25px;
