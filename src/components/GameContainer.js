@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { timerValue } from '../logic/constants';
 import Timer from './Timer';
 import CluesContainer from './clues/CluesContainer';
@@ -23,6 +23,7 @@ const GameContainer = () => {
 
   const [score, setScore] = useState(0);
   const [secondsLeft, setSecondsLeft] = useState(timerValue);
+  // const secondsLeftRef = useRef(timerValue);
   const [selectedCategory, setSelectedCategory] = useState('movies');
   const [title, setTitle] = useState({
     titleString: [],
@@ -45,6 +46,7 @@ const GameContainer = () => {
         setPlayerFeedback={setPlayerFeedback}
         secondsLeft={secondsLeft}
         setSecondsLeft={setSecondsLeft}
+        // secondsLeftRef={secondsLeftRef}
         title={title}
       />
       <CluesContainer

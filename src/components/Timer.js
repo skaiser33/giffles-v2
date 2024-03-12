@@ -15,9 +15,29 @@ const Timer = ({
   setPlayerFeedback,
   secondsLeft,
   setSecondsLeft,
+  // secondsLeftRef,
   title,
 }) => {
   const decreaseSeconds = () => {
+    // if (secondsLeftRef.current > 1) {
+    //   secondsLeftRef.current = --secondsLeftRef.current;
+    // } else {
+    //   setCountingDown(false);
+    //   if (isNewGame) {
+    //     setIsNewGame(false);
+    //   }
+    //   if (title.titleString.length) {
+    //     clearAll();
+    //     setGifSources(stockGifs.loserGifs);
+    //     setPlayerFeedback(
+    //       `You're a little slow on the draw.\nThe correct answer was ${title.titleString.toUpperCase()}.`
+    //     );
+    //     // setPlayerFeedbackHidden('');
+    //   }
+    //   setGuess('');
+    //   secondsLeftRef.current = timerValue;
+    // }
+    // console.log('secondsLeftRef.current', secondsLeftRef.current);
     setSecondsLeft((prev) => {
       if (prev > 1) {
         return --prev;
@@ -44,21 +64,13 @@ const Timer = ({
     let timer;
     if (countingDown) {
       timer = setInterval(decreaseSeconds, 1000);
-      // timer.classList.remove('hide');
     } else {
       clearInterval(timer);
-
-      // isPlayerCorrect.innerHTML = `You're a little slow on the draw.<br>The correct answer was <em>${masterArray[randomIndex]}.</em>`;
-      // showLoserGifs();
-      // clearBetweenGifs();
     }
     return () => clearInterval(timer);
   }, [countingDown]);
 
-  // const startTimer = () => setCountingDown((prev) => !prev);
-
   let timerHidden = countingDown ? 'show' : 'hide';
-  // let timerHidden = 'hide';
 
   return (
     <div>
@@ -69,7 +81,6 @@ const Timer = ({
           useGrouping: false,
         })}
       </p>
-      {/* <button onClick={startTimer}>{countingDown ? 'Cancel' : 'Start'}</button> */}
     </div>
   );
 };

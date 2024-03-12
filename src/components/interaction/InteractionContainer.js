@@ -79,9 +79,6 @@ const InteractionContainer = ({
     }
     setCountingDown(false);
     setSecondsLeft(timerValue);
-    // if (gifSources.length) {
-    //   ifSources.length);
-    // }
     clearAll();
     // if player is CORRECT
     if (
